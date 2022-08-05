@@ -1,0 +1,55 @@
+.profile {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.profile__avatar {
+    grid-column-start: 1;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-right: 45px;
+}
+
+.profile__info {
+    display: grid;
+    grid-template-areas:
+        "name button"
+        "description description";
+        gap: 18px;
+}
+
+.profile__name {
+    font-weight: 500;
+    margin: auto;
+    font-size: 42px;
+}
+
+.profile__description {
+    font-weight: 400;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.profile__button {
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.profile__edit-button {
+    height: 24px;
+    width: 24px;
+    background: transparent url(../images/edit.png) no-repeat center;
+    border: 0.5px solid white;
+}
+
+.profile__add-button {
+    height: 50px;
+    width: 150px;
+    background: transparent url(../images/add.png) no-repeat center;
+    border: 0.5px solid white;
+    margin-left: auto;
+}
