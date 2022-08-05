@@ -43,13 +43,26 @@
     height: 24px;
     width: 24px;
     background: transparent url(../images/edit.png) no-repeat center;
-    border: 0.5px solid white;
+    border: 1px solid white;
+    transition: ease-in-out 0.4s;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
 
 .profile__add-button {
     height: 50px;
     width: 150px;
     background: transparent url(../images/add.png) no-repeat center;
-    border: 0.5px solid white;
+    border: 2px solid white;
+    border-radius: 2px;
     margin-left: auto;
+    transition: 0.4s ease-in-out;
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
