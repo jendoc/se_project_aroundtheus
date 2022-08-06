@@ -10,3 +10,15 @@
 .header__line {
     border: 1px solid #545454;
 }
+
+@media screen and (max-width : 320px) {
+    .header {
+
+    }
+    .header__logo {
+        margin-left: 8%;
+    }
+    .header__line {
+        width: 100vw;
+    }
+}

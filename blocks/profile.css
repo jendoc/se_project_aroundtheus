@@ -7,8 +7,7 @@
 
 .profile__avatar {
     grid-column-start: 1;
-    height: 120px;
-    width: 120px;
+    max-width: 120px;
     border-radius: 50%;
     margin-right: 45px;
 }
@@ -24,14 +23,15 @@
 .profile__name {
     font-weight: 500;
     margin: auto;
-    font-size: 42px;
+    font-size: 2.6em;
 }
 
 .profile__description {
     font-weight: 400;
     margin: 0;
-    font-size: 18px;
+    font-size: 1.1rem;
     line-height: 22px;
+    grid-area: description;
 }
 
 .profile__button {
@@ -67,11 +67,7 @@
     cursor: pointer;
 }
 
-@media (max-width : 768px) {
-    
-}
-
-@media (max-width : 320px) {
+@media screen and (min-width : 320px) and (max-width : 768px) {
     .profile {
         display: flex;
         align-items: center;
@@ -84,11 +80,16 @@
     }
     .profile__info {
         margin-top: 27px;
-        text-align: center;
         margin-bottom: 64px;
+        text-align: center;
     }
     .profile__add-button {
         width: 88%;
         margin: 0;
+    }
+    .profile__name {
+        font-weight: 500;
+        margin: auto;
+        font-size: 1.4rem;
     }
 }

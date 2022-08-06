@@ -10,10 +10,10 @@
 
 @import url(../blocks/footer.css);
 
-@media (max-width : 768px) {
+@media screen and (max-width : 768px) {
     /* tablet */
 }
 
-@media (max-width : 320px) {
+@media screen and (max-width : 320px) {
     /* mobile */
 }

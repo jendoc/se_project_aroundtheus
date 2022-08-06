@@ -4,3 +4,9 @@
     font-size: 18px;
     margin-top: 50px;
 }
+
+@media screen and (max-width : 320px) {
+    .footer__copyright {
+        margin-left: 1em;
+    }
+}
