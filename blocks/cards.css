@@ -32,6 +32,7 @@
 .card__title {
     font-weight: 900;
     font-size: 24px;
+    line-height: 1.2;
     z-index: 2;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -45,7 +46,6 @@
     z-index: 2;
     background: transparent url(../images/like.png) no-repeat center;
     border: none;
-    width: 21px;
     height: 18px;
     padding: 15px;
     transition: 0.4s ease-in-out;
@@ -56,16 +56,17 @@
     cursor: pointer;
 }
 
-.card__rectangle {
-    background-color: #fff;
-    border-radius: 10px;
-    z-index: 1;
-    width: 282px;
-    height: 361px;
-    position: absolute;
-}
-
 .card__image {
     max-width: 282px;
     z-index: 2;
+}
+
+@media (max-width : 320px) {
+    .card__list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 17px;
+        row-gap: 20px;
+        padding: 0;
+    }
 }

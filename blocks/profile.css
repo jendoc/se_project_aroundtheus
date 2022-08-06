@@ -66,3 +66,29 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+@media (max-width : 768px) {
+    
+}
+
+@media (max-width : 320px) {
+    .profile {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
+    .profile__avatar {
+        margin: 0;
+    }
+    .profile__info {
+        margin-top: 27px;
+        text-align: center;
+        margin-bottom: 64px;
+    }
+    .profile__add-button {
+        width: 88%;
+        margin: 0;
+    }
+}
