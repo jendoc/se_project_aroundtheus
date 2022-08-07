@@ -1,24 +1,34 @@
 .header {
-    margin-top: 45px;
+    max-width: 880px;
+    margin: auto;
 }
 
 .header__logo {
-    max-width: 880px;
+    max-width: 173px;
     margin-bottom: 40px;
+    margin-top: 45px;
 }
 
 .header__line {
     border: 1px solid #545454;
+    width: 880px;
+    margin: auto;
 }
 
-@media screen and (max-width : 320px) {
-    .header {
-
-    }
+@media screen and (max-width : 585px) {
     .header__logo {
         margin-left: 8%;
     }
     .header__line {
-        width: 100vw;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width : 890px) {
+    .header__logo {
+        margin-left: 8%;
+    }
+    .header__line {
+        max-width: 100%;
     }
 }

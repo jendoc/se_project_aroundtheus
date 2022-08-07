@@ -9,11 +9,3 @@
 @import url(../blocks/card.css);
 
 @import url(../blocks/footer.css);
-
-@media screen and (max-width : 768px) {
-    /* tablet */
-}
-
-@media screen and (max-width : 320px) {
-    /* mobile */
-}
