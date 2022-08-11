@@ -1,23 +1,37 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .profile {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding-top: 40px;
     padding-bottom: 50px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     max-width: 880px;
     margin: auto;
 }
 
 .profile__avatar {
-    grid-column-start: 1;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
     max-width: 120px;
     border-radius: 50%;
     margin-right: 45px;
 }
 
 .profile__info {
+    display: -ms-grid;
     display: grid;
-    grid-template-areas:
+        grid-template-areas:
         "name button"
         "description description";
         gap: 18px;
@@ -30,6 +44,9 @@
 }
 
 .profile__description {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     font-weight: 400;
     margin: 0;
     font-size: 1.1rem;
@@ -38,7 +55,8 @@
 }
 
 .profile__button {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border: 1px solid white;
 }
 
@@ -47,6 +65,8 @@
     width: 24px;
     background: transparent url(../images/edit.png) no-repeat center;
     border: 1px solid white;
+    -webkit-transition: ease-in-out 0.4s;
+    -o-transition: ease-in-out 0.4s;
     transition: ease-in-out 0.4s;
 }
 
@@ -62,6 +82,8 @@
     border: 2px solid white;
     border-radius: 2px;
     margin-left: auto;
+    -webkit-transition: 0.4s ease-in-out;
+    -o-transition: 0.4s ease-in-out;
     transition: 0.4s ease-in-out;
 }
 
@@ -72,9 +94,16 @@
 
 @media screen and (max-width:585px) {
     .profile {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         padding-top: 40px;
         padding-bottom: 50px;
     }
@@ -107,6 +136,8 @@
 @media screen and (min-width:586px) and (max-width:890px) {
     .profile {
         margin: auto;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
         max-width: fit-content;
     }
     .profile__name {
