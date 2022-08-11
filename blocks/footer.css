@@ -10,13 +10,13 @@
     margin-top: 50px;
 }
 
-@media screen and (max-width : 585px) {
+@media screen and (max-width:585px) {
     .footer__copyright {
         margin-left: 8%;
     }
 }
 
-@media screen and (max-width : 890px) {
+@media screen and (max-width:890px) {
     .footer__copyright {
         margin-left: 8%;
     }

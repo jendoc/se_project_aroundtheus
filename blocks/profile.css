@@ -70,7 +70,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width : 585px) {
+@media screen and (max-width:585px) {
     .profile {
         display: flex;
         align-items: center;
@@ -104,7 +104,7 @@
     }
 }
 
-@media screen and (min-width: 586px) and (max-width : 890px) {
+@media screen and (min-width:586px) and (max-width:890px) {
     .profile {
         margin: auto;
         max-width: fit-content;
