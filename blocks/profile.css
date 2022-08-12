@@ -85,7 +85,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width:585px) {
+@media screen and (max-width:580px) {
     .profile {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -125,13 +125,12 @@
         font-size: 1rem;
     }
 }
-/*
-@media screen and (min-width:586px) and (max-width:890px) {
+
+@media screen and (min-width:581px) and (max-width:879px) {
     .profile {
         margin: auto;
         max-width: -webkit-fit-content;
         max-width: -moz-fit-content;
-        max-width: fit-content;
     }
     .profile__name {
         font-size: 1.5rem;
