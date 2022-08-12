@@ -9,7 +9,8 @@
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[3];
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax( 282px, max-content));
+    column-gap: 17px;
     row-gap: 20px;
     padding: 0;
     max-width: 880px;
@@ -97,21 +98,6 @@
     .gallery__grid {
         display: -ms-grid;
         display: grid;
-        -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
         row-gap: 20px;
-    }
-}
-
-@media screen and (min-width:586px) and (max-width:890px) {
-    .gallery__grid {
-        -ms-grid-columns: 1fr 17px 1fr;
-        grid-template-columns: repeat(2, 1fr);
-        max-width: -webkit-fit-content;
-        max-width: -moz-fit-content;
-        max-width: fit-content;
-        -webkit-column-gap: 17px;
-           -moz-column-gap: 17px;
-                column-gap: 17px;
     }
 }
