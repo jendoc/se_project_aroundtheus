@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
 
+@import url(../vendor/Inter_Web/inter.css);
+
 @import url(../blocks/page.css);
 
 @import url(../blocks/header.css);
@@ -11,8 +13,3 @@
 @import url(../blocks/card.css);
 
 @import url(../blocks/footer.css);
-
-@font-face {
-  font-family: "Inter";
-  src: url(../vendor/Inter_Web/inter.css);
-}
