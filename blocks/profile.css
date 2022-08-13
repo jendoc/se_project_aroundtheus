@@ -129,8 +129,6 @@
     margin: 0;
   }
   .profile__name {
-    font-weight: 500;
-    margin: auto;
     font-size: 22px;
     line-height: 27px;
   }
