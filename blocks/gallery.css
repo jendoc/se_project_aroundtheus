@@ -1,96 +1,10 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 .gallery__grid {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[3];
-    grid-template-columns: repeat(auto-fit, minmax(282px, max-content));
-    justify-content: center;
-    column-gap: 17px;
-    row-gap: 20px;
-    padding: 0;
-    max-width: 880px;
-    margin: auto;
-}
-
-.gallery__container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    color: #000;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-}
-
-.gallery__description {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    background-color: #fff;
-    width: 282px;
-    height: 72px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-}
-
-.gallery__title {
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 1.2;
-    z-index: 2;
-    -o-text-overflow: ellipsis;
-       text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin: 0;
-}
-
-.gallery__like-button {
-    z-index: 2;
-    background: transparent url(../images/like.png) no-repeat center;
-    border: none;
-    height: 18px;
-    padding: 15px;
-    -webkit-transition: 0.4s ease-in-out;
-    -o-transition: 0.4s ease-in-out;
-    transition: 0.4s ease-in-out;
-}
-
-.gallery__like-button:hover {
-    opacity: 0.6;
-    cursor: pointer;
-}
-
-.gallery__image {
-    width: 282px;
-    height: 282px;
-    z-index: 2;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    -o-object-fit: cover;
-       object-fit: cover;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, max-content));
+  justify-content: center;
+  column-gap: 17px;
+  row-gap: 20px;
+  padding: 0;
+  max-width: 880px;
+  margin: auto;
 }

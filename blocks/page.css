@@ -1,9 +1,9 @@
 .page {
-    max-width: 1600px;
-    font-family: 'Inter', 'Arial', sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    background-color: #000;
-    color: #fff;
-    margin: auto;
+  max-width: 1600px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #000;
+  color: #fff;
+  margin: auto;
 }
