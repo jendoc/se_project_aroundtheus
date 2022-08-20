@@ -1,16 +1,20 @@
 .modal {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   background-color: rgb(0, 0, 0, 0.5);
   z-index: 3;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
-
+/*
+.modal_opened {
+  display: flex;
+}
+*/
 .modal__container {
   position: fixed;
   width: 430px;
@@ -22,13 +26,21 @@
 
 .modal__close-button {
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -45px;
+  right: -45px;
   background: transparent url(../images/close.svg) no-repeat center;
   border: none;
   width: 45px;
   height: 45px;
   padding: 0;
+  -webkit-transition: ease-in-out 0.4s;
+  -o-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.modal__close-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .modal__form {
@@ -47,7 +59,7 @@
 
 .modal__input {
   border: 0;
-  padding-bottom: 14px;
+  padding: 14px 5px 14px 5px;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 }
 
@@ -57,4 +69,23 @@
   border-radius: 2px;
   border: 0;
   padding: 15px;
+  -webkit-transition: ease-in-out 0.4s;
+  -o-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.modal__submit-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 597px) {
+  .modal__container {
+    max-width: 282px;
+  }
+  .modal__close-button {
+    position: absolute;
+    right: 0; 
+    transform: scale(-0.6);
+  }
 }
