@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-      <header class="header">
-        <img
-          src="./images/logo.svg"
-          class="header__logo"
-          alt="Around The U.S. logo"
-        />
-      </header>
-      <main class="page__content">
+    <header class="header">
+      <img
+        src="./images/logo.svg"
+        class="header__logo"
+        alt="Around The U.S. logo"
+      />
+    </header>
+    <main class="page__content">
       <section class="profile">
         <img
           class="profile__avatar"
@@ -29,6 +29,25 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
+      <div class="modal" id="edit-profile">
+        <div class="modal__container">
+          <button class="modal__close-button"></button>
+            <h2 class="modal__title">Edit profile</h2>
+            <form class="modal__form">
+            <input
+              type="text"
+              placeholder="Name"
+              class="modal__name modal__input"
+            />
+            <input
+              type="text"
+              placeholder="Description"
+              class="modal__about-me modal__input"
+            />
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
       <section class="gallery">
         <ul class="gallery__grid">
           <li class="card">
