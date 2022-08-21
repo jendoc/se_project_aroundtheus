@@ -10,11 +10,11 @@
   align-items: center;
   display: none;
 }
-/*
+
 .modal_opened {
   display: flex;
 }
-*/
+
 .modal__container {
   position: fixed;
   width: 430px;

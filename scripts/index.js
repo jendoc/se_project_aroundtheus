@@ -25,3 +25,18 @@ let initialCards = [
   },
 ];
 
+let editButton = document.querySelector('.profile__edit-button');
+let modal = document.querySelector('.modal');
+let closeButton = document.querySelector('.modal__close-button');
+
+function openEdit() {
+  modal.classList.add('modal_opened')
+};
+
+function closeEdit() {
+  modal.classList.remove('modal_opened')
+};
+
+editButton.addEventListener('click', openEdit);
+
+closeButton.addEventListener('click', closeEdit);
