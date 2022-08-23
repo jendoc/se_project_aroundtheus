@@ -25,9 +25,9 @@ let initialCards = [
   },
 ];
 
-let editButton = document.querySelector('.profile__edit-button');
-let modal = document.querySelector('.modal');
-let closeButton = document.querySelector('.modal__close-button');
+const editButton = document.querySelector('.profile__edit-button');
+const modal = document.querySelector('.modal');
+const closeButton = document.querySelector('.modal__close-button');
 
 function openEdit() {
   modal.classList.add('modal_opened')
@@ -35,8 +35,25 @@ function openEdit() {
 
 function closeEdit() {
   modal.classList.remove('modal_opened')
+  // reset input, revert to original input
 };
 
 editButton.addEventListener('click', openEdit);
-
 closeButton.addEventListener('click', closeEdit);
+
+const profileName = document.querySelector('.profile__name');
+const profileAboutMe = document.querySelector('.profile__description');
+
+const inputName = document.querySelector('.modal__name')
+const inputAboutMe = document.querySelector('.modal__about-me')
+const submitButton = document.querySelector('.modal__submit-button');
+
+function saveProfileEdits(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileAboutMe.textContent = inputAboutMe.value;
+  closeEdit();
+}
+
+submitButton.addEventListener('click', saveProfileEdits);
+
