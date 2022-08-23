@@ -56,4 +56,3 @@ function saveProfileEdits(evt) {
 }
 
 submitButton.addEventListener('click', saveProfileEdits);
-
