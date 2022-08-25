@@ -85,7 +85,7 @@
   }
   .modal__close-button {
     position: absolute;
-    right: 0; 
+    right: 0;
     transform: scale(-0.6);
   }
 }

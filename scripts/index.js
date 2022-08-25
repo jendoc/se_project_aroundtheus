@@ -54,6 +54,6 @@ function saveProfileEdits(evt) {
   profileName.textContent = inputName.value;
   profileAboutMe.textContent = inputAboutMe.value;
   closeEdit();
-};
+}
 
 submitButton.addEventListener("click", saveProfileEdits);
