@@ -29,28 +29,28 @@ const cardTemplate = document.querySelector("#card").content;
 const cardList = document.querySelector(".gallery__grid");
 
 const editButton = document.querySelector(".profile__edit-button");
-const modal = document.querySelector(".modal");
-const closeButton = document.querySelector(".modal__close-button");
+const profilePopup = document.querySelector(".modal");
+const profilecloseButton = document.querySelector(".modal__close-button");
 
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__description");
 
 const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
-const submitButton = document.querySelector(".modal__submit-button");
+const saveButton = document.querySelector(".modal__submit-button");
 
 function openEdit() {
-  modal.classList.add("modal_opened");
+ profilePopup.classList.add("modal_opened");
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
 }
 
 function closeEdit() {
-  modal.classList.remove("modal_opened");
+ profilePopup.classList.remove("modal_opened");
 }
 
 editButton.addEventListener("click", openEdit);
-closeButton.addEventListener("click", closeEdit);
+profilecloseButton.addEventListener("click", closeEdit);
 
 function saveProfileEdits(evt) {
   evt.preventDefault();
@@ -59,7 +59,7 @@ function saveProfileEdits(evt) {
   closeEdit();
 }
 
-submitButton.addEventListener("click", saveProfileEdits);
+saveButton.addEventListener("click", saveProfileEdits);
 
 initialCards.forEach(function (cardData) {
   const card = cardTemplate.cloneNode(true);
