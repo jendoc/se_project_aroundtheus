@@ -30,14 +30,14 @@ const cardList = document.querySelector(".gallery__grid");
 
 const editButton = document.querySelector(".profile__edit-button");
 const profilePopup = document.querySelector(".modal");
-const profilecloseButton = document.querySelector(".modal__close-button");
+const profileCloseButton = document.querySelector(".modal__close-button");
 
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__description");
 
 const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
-const saveButton = document.querySelector(".modal__submit-button");
+const editForm = document.querySelector(".modal__form");
 
 function openEdit() {
  profilePopup.classList.add("modal_opened");
@@ -50,7 +50,7 @@ function closeEdit() {
 }
 
 editButton.addEventListener("click", openEdit);
-profilecloseButton.addEventListener("click", closeEdit);
+profileCloseButton.addEventListener("click", closeEdit);
 
 function saveProfileEdits(evt) {
   evt.preventDefault();
@@ -59,7 +59,7 @@ function saveProfileEdits(evt) {
   closeEdit();
 }
 
-saveButton.addEventListener("click", saveProfileEdits);
+editForm.addEventListener("submit", saveProfileEdits);
 
 initialCards.forEach(function (cardData) {
   const card = cardTemplate.cloneNode(true);
