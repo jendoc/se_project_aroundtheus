@@ -74,3 +74,12 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+.card__delete {
+  width: 18px;
+  position: absolute;
+  align-self: flex-end;
+  padding-top: 18px;
+  padding-right: 18px;
+  z-index: 3;
+}

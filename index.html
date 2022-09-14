@@ -29,8 +29,9 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
+
       <div class="modal" id="edit-profile">
-        <div class="modal__container">
+        <div class="modal__container_edit modal__container">
           <button class="modal__close-button"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form">
@@ -44,15 +45,44 @@
               placeholder="Description"
               class="modal__about-me modal__input"
             />
-            <button type="submit" class="modal__submit-button">Save</button>
+            <button
+              type="submit"
+              class="modal__submit-button_edit modal__submit-button"
+            >
+              Save
+            </button>
           </form>
         </div>
       </div>
+      <!--
+      <div class="modal__container_create modal__container" id="add-content">
+            <button class="modal__close-button"></button>
+            <h2 class="modal__title">New place</h2>
+            <form class="modal__form">
+              <input
+                type="text"
+                placeholder="Title"
+                class="modal__title modal__input"
+              />
+              <input
+                type="text"
+                placeholder="Image link"
+                class="modal__image-link modal__input"
+              />
+              <button type="submit" class="modal__submit-button_create modal__submit-button">Create</button>
+            </form>
+          </div>
+        -->
       <section class="gallery">
         <ul class="gallery__grid"></ul>
         <template id="card">
           <li class="card">
-            <img class="card__image" alt=""/>
+            <img class="card__image" alt="" />
+            <img
+              class="card__delete"
+              alt="Delete button"
+              src="./images/trashcan.svg"
+            />
             <div class="card__description">
               <h2 class="card__title"></h2>
               <button class="card__like-button" type="button"></button>
