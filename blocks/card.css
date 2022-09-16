@@ -74,3 +74,18 @@
   opacity: 0.5;
   cursor: pointer;
 }
+
+.card__delete-button {
+  position: absolute;
+  z-index: 2;
+  padding: 18px 18px 0px 0px;
+  align-self: flex-end;
+  -webkit-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

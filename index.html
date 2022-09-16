@@ -29,18 +29,21 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
-      <div class="modal" id="edit-profile">
+
+      <div class="modal" id="edit-modal">
         <div class="modal__container">
           <button class="modal__close-button"></button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form">
+          <form class="modal__form_edit modal__form">
             <input
               type="text"
+              name="name"
               placeholder="Name"
               class="modal__name modal__input"
             />
             <input
               type="text"
+              name="description"
               placeholder="Description"
               class="modal__about-me modal__input"
             />
@@ -48,11 +51,49 @@
           </form>
         </div>
       </div>
+
+      <div class="modal" id="add-modal">
+        <div class="modal__container">
+          <button class="modal__close-button"></button>
+          <h2 class="modal__title">New Place</h2>
+          <form class="modal__form_add modal__form">
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              class="modal__title modal__input"
+            />
+            <input
+              type="text"
+              name="link"
+              placeholder="Image link"
+              class="modal__image-link modal__input"
+            />
+            <button type="submit" class="modal__submit-button">Create</button>
+          </form>
+        </div>
+      </div>
+
+       <div class="modal" id="gallery-modal">
+        <button class="modal__close-button"></button>
+        <img class="modal__gallery" 
+        src=""
+        alt=""
+        >
+        <p class="modal__caption"></p>
+       </div>
+
       <section class="gallery">
         <ul class="gallery__grid"></ul>
+
         <template id="card">
           <li class="card">
-            <img class="card__image" alt=""/>
+            <img class="card__image" alt="" />
+            <img
+              src="./images/trash.svg"
+              class="card__delete-button"
+              alt="delete button"
+            />
             <div class="card__description">
               <h2 class="card__title"></h2>
               <button class="card__like-button" type="button"></button>
