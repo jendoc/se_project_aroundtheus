@@ -30,8 +30,8 @@
         <button class="profile__add-button" type="button"></button>
       </section>
 
-      <div class="modal" id="edit-profile">
-        <div class="modal__container_edit modal__container">
+      <div class="modal">
+        <div class="modal__container_edit modal__container" id="edit-profile">
           <button class="modal__close-button"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form">
@@ -53,33 +53,44 @@
             </button>
           </form>
         </div>
+
+        <div class="modal__container_create modal__container" id="add-content">
+          <button class="modal__close-button"></button>
+          <h2 class="modal__title">New place</h2>
+          <form class="modal__form">
+            <input
+              type="text"
+              placeholder="Title"
+              class="modal__title modal__input"
+            />
+            <input
+              type="text"
+              placeholder="Image link"
+              class="modal__image-link modal__input"
+            />
+            <button
+              type="submit"
+              class="modal__submit-button_create modal__submit-button"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+
+        <div class="modal__container_photo modal__container" id="photo-display">
+          <button class="modal__close-button"></button>
+          <img src="" alt="" />
+          <p class="modal__caption"></p>
+        </div>
       </div>
-      <!--
-      <div class="modal__container_create modal__container" id="add-content">
-            <button class="modal__close-button"></button>
-            <h2 class="modal__title">New place</h2>
-            <form class="modal__form">
-              <input
-                type="text"
-                placeholder="Title"
-                class="modal__title modal__input"
-              />
-              <input
-                type="text"
-                placeholder="Image link"
-                class="modal__image-link modal__input"
-              />
-              <button type="submit" class="modal__submit-button_create modal__submit-button">Create</button>
-            </form>
-          </div>
-        -->
+
       <section class="gallery">
         <ul class="gallery__grid"></ul>
         <template id="card">
           <li class="card">
             <img class="card__image" alt="" />
             <img
-              class="card__delete"
+              class="card__delete-button"
               alt="Delete button"
               src="./images/trashcan.svg"
             />
@@ -91,6 +102,7 @@
         </template>
       </section>
     </main>
+
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>

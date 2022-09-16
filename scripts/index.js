@@ -25,28 +25,36 @@ const initialCards = [
   },
 ];
 
+// Cards
 const cardTemplate = document.querySelector("#card").content;
 const cardList = document.querySelector(".gallery__grid");
 
+// Card elements
 const editButton = document.querySelector(".profile__edit-button");
-const profilePopup = document.querySelector(".modal");
+const profilePopup = document.querySelector("#edit-profile");
+const editPopup = document.querySelector("#add-content");
+const photoDisplay = document.querySelector("#photo-display");
 const profileCloseButton = document.querySelector(".modal__close-button");
+const likeButton = document.querySelectorAll(".card__like-button");
+const deleteButton = document.querySelectorAll(".card__delete-button");
 
+// Profile elements
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__description");
 
+// Edit modal input
 const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
 const editForm = document.querySelector(".modal__form");
 
 function openEdit() {
- profilePopup.classList.add("modal_opened");
+  profilePopup.classList.add("modal_opened");
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
 }
 
 function closeEdit() {
- profilePopup.classList.remove("modal_opened");
+  profilePopup.classList.remove("modal_opened");
 }
 
 editButton.addEventListener("click", openEdit);
@@ -70,3 +78,7 @@ initialCards.forEach(function (cardData) {
   cardTitle.textContent = cardData.name;
   cardList.appendChild(card);
 });
+
+function deleteCard(card) {}
+
+deleteButton.addEventListener("click", deleteCard);

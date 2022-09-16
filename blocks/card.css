@@ -75,11 +75,19 @@
   cursor: pointer;
 }
 
-.card__delete {
+.card__delete-button {
   width: 18px;
   position: absolute;
   align-self: flex-end;
   padding-top: 18px;
   padding-right: 18px;
   z-index: 3;
+  -webkit-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
