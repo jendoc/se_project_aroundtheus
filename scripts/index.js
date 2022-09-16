@@ -39,6 +39,7 @@ const galleryModal = document.querySelector("#gallery-modal");
 const editForm = document.querySelector(".modal__form_edit");
 const addForm = document.querySelector(".modal__form_add");
 
+// Edit modal input
 const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
 const inputTitle = document.querySelector(".modal__title");

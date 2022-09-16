@@ -47,7 +47,35 @@
               placeholder="Description"
               class="modal__about-me modal__input"
             />
-            <button type="submit" class="modal__submit-button">Save</button>
+            <button
+              type="submit"
+              class="modal__submit-button_edit modal__submit-button"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+
+        <div class="modal__container_create modal__container" id="add-content">
+          <button class="modal__close-button"></button>
+          <h2 class="modal__title">New place</h2>
+          <form class="modal__form">
+            <input
+              type="text"
+              placeholder="Title"
+              class="modal__title modal__input"
+            />
+            <input
+              type="text"
+              placeholder="Image link"
+              class="modal__image-link modal__input"
+            />
+            <button
+              type="submit"
+              class="modal__submit-button_create modal__submit-button"
+            >
+              Create
+            </button>
           </form>
         </div>
       </div>
@@ -102,6 +130,7 @@
         </template>
       </section>
     </main>
+
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>
