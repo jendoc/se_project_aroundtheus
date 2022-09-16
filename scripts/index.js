@@ -30,7 +30,6 @@ const cardTemplate = document.querySelector("#card").content;
 const cardList = document.querySelector(".gallery__grid");
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__description");
-let galleryPhoto = document.querySelectorAll(".card__image");
 
 // Modal components
 const profileModal = document.querySelector("#edit-modal");
