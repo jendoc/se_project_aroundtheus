@@ -33,6 +33,9 @@
   margin: auto;
   font-size: 2.6em;
   line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__description {
@@ -41,6 +44,9 @@
   font-size: 1.1rem;
   line-height: 22px;
   grid-area: description;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__button {

@@ -49,10 +49,7 @@ const modalCaption = imageModal.querySelector(".modal__caption");
 // Buttons
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
-
-const editCloseButton = editModal.querySelector(".modal__close-button");
-const addCloseButton = addModal.querySelector(".modal__close-button");
-const imageCloseButton = imageModal.querySelector(".modal__close-button");
+const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // Functions & Event Listeners
 
@@ -75,16 +72,9 @@ addButton.addEventListener("click", () => {
   openModal(addModal);
 });
 
-editCloseButton.addEventListener("click", () => {
-  closeModal(editModal);
-});
-
-addCloseButton.addEventListener("click", () => {
-  closeModal(addModal);
-});
-
-imageCloseButton.addEventListener("click", () => {
-  closeModal(imageModal);
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
 });
 
 function saveProfileEdits(evt) {
@@ -96,7 +86,7 @@ function saveProfileEdits(evt) {
 
 editForm.addEventListener("submit", saveProfileEdits);
 
-function renderCard(cardData) {
+function createCard(cardData) {
   const card = cardTemplate.cloneNode(true);
   const cardImage = card.querySelector(".card__image");
   const cardTitle = card.querySelector(".card__title");
@@ -106,7 +96,6 @@ function renderCard(cardData) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.title;
   cardTitle.textContent = cardData.title;
-  cardList.prepend(card);
   cardImage.addEventListener("click", function () {
     openModal(imageModal);
     modalImage.src = cardData.link;
@@ -122,20 +111,29 @@ function renderCard(cardData) {
     const badCard = deleteButton.closest(".card");
     badCard.remove();
   });
+
+  return card;
 }
 
-initialCards.forEach(function (cardData) {
-  renderCard(cardData);
-});
+function renderCard(card, container) {
+  container.prepend(card);
+}
 
 addForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const title = evt.target.title.value;
   const link = evt.target.link.value;
-  renderCard({
+  const newCard = createCard({
     title,
     link,
   });
+
+  renderCard(newCard, cardList);
   closeModal(addModal);
   addForm.reset();
+});
+
+initialCards.forEach(function (cardData) {
+  const initCard = createCard(cardData);
+  renderCard(initCard, cardList);
 });
