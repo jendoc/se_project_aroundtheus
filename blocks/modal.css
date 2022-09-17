@@ -10,6 +10,8 @@
   align-items: center;
   display: flex;
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.6s, opacity 0.5s linear;
 }
 
 .modal__container {
@@ -23,6 +25,7 @@
 
 .modal_opened {
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__close-button {
@@ -82,14 +85,32 @@
   cursor: pointer;
 }
 
-.modal__gallery {
-  margin: 90px auto;
-  align-self: center;
+.modal__container_image {
+  background: none;
+  border-radius: 0%;
+  box-shadow: none;
+  width: max-content;
+}
+
+.modal__image {
+  max-height: 75vh;
+  max-width: 75vw;
+}
+
+.modal__caption {
+  color: #fff;
+  font-weight: 400;
+  line-height: 14.5px;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 597px) {
   .modal__container {
     max-width: 282px;
+  }
+  .modal__container_image {
+    max-width: 75vw;
   }
   .modal__close-button {
     position: absolute;
