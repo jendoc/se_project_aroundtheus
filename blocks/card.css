@@ -71,6 +71,17 @@
   transition: 0.4s ease-in-out;
 }
 
+.card__like-button_active {
+  z-index: 2;
+  background: transparent url(../images/like-active.svg) no-repeat center;
+  border: none;
+  height: 18px;
+  padding: 15px;
+  -webkit-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
 .card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
