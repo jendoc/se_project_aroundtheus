@@ -1,11 +1,19 @@
-function showInputError(formElement, inputElement, { inputErrorClass, errorClass }) {
+function showInputError(
+  formElement,
+  inputElement,
+  { inputErrorClass, errorClass }
+) {
   const errorMessageEl = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputElement.validationMessage;
   errorMessageEl.classList.add(errorClass);
 }
 
-function hideInputError(formElement, inputElement, { inputErrorClass, errorClass }) {
+function hideInputError(
+  formElement,
+  inputElement,
+  { inputErrorClass, errorClass }
+) {
   const errorMessageEl = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
@@ -65,16 +73,6 @@ function enableValidation(configObjects) {
     });
 
     setEventListeners(formElement, configObjects);
-    //look for all inputs inside the formElement
-    //loop through all the inputs to see if they are all valid
-    //if input is not valid
-    //grab the validation message
-    //add error class to input
-    //display error message
-    //disable button
-    //if all inputs are valid
-    //enable button
-    //reset error messages
   });
 }
 
