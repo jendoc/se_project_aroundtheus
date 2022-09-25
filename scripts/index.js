@@ -55,11 +55,11 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-}
+};
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-}
+};
 
 editButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
@@ -82,7 +82,7 @@ function saveProfileEdits(evt) {
   profileName.textContent = inputName.value;
   profileAboutMe.textContent = inputAboutMe.value;
   closeModal(editModal);
-}
+};
 
 editForm.addEventListener("submit", saveProfileEdits);
 
@@ -113,11 +113,11 @@ function createCard(cardData) {
   });
 
   return card;
-}
+};
 
 function renderCard(card, container) {
   container.prepend(card);
-}
+};
 
 addForm.addEventListener("submit", (evt) => {
   evt.preventDefault();

@@ -34,19 +34,29 @@
         <div class="modal__container">
           <button class="modal__close-button"></button>
           <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form_edit modal__form">
+          <form class="modal__form_edit modal__form" novalidate>
             <input
               type="text"
               name="name"
               placeholder="Name"
               class="modal__name modal__input"
+              id="profile-name"
+              required
+              minlength="2"
+              maxlength="40"
             />
+            <span class="modal__error" id="profile-name-error"></span>
             <input
               type="text"
               name="description"
               placeholder="Description"
               class="modal__about-me modal__input"
+              id="profile-about-me"
+              required
+              minlength="2"
+              maxlength="200"
             />
+            <span class="modal__error" id="profile-about-me-error"></span>
             <button
               type="submit"
               class="modal__submit-button_edit modal__submit-button"
@@ -61,20 +71,28 @@
         <div class="modal__container">
           <button class="modal__close-button"></button>
           <h2 class="modal__title">New Place</h2>
-          <form class="modal__form_add modal__form">
+          <form class="modal__form_add modal__form" novalidate>
             <input
               type="text"
               name="title"
               placeholder="Title"
               class="modal__title modal__input"
+              id="add-title"
+              required
+              minlength="2"
+              maxlength="30"
             />
+            <span class="modal__error" id="add-title-error"></span>
             <input
-              type="text"
+              type="url"
               name="link"
               placeholder="Image link"
               class="modal__image-link modal__input"
+              id="add-link"
+              required
             />
-            <button type="submit" class="modal__submit-button">Create</button>
+            <span class="modal__error" id="add-link-error"></span>
+            <button type="submit" class="modal__submit-button modal__button_disabled" disabled>Create</button>
           </form>
         </div>
       </div>
@@ -111,5 +129,6 @@
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
