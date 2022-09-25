@@ -77,7 +77,6 @@
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
-  visibility: hidden;
   opacity: 0;
   margin-top: -30px;
   padding-top: 5px;
@@ -85,7 +84,6 @@
 }
 
 .modal__error_visible {
-  visibility: visible;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
@@ -94,7 +92,7 @@
   background-color: black;
   color: white;
   border-radius: 2px;
-  border: 0;
+  border: 0px;
   padding: 15px;
   margin-top: 20px;
   -webkit-transition: ease-in-out 0.4s;
@@ -108,9 +106,10 @@
 }
 
 .modal__button_disabled {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
-  color: rgba(0, 0, 0, 0.2);
   padding: 15px;
   background: #ffffff;
 }

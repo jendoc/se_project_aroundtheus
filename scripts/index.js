@@ -55,10 +55,12 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+     // add esc key listener
 };
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+     //remove esc key listener
 };
 
 editButton.addEventListener("click", () => {
