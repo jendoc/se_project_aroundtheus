@@ -46,45 +46,48 @@ const imageModal = document.querySelector("#image-modal");
 const modalImage = imageModal.querySelector(".modal__image");
 const modalCaption = imageModal.querySelector(".modal__caption");
 
+const openedModal = document.querySelector(".modal_opened");
+
 // Buttons
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // Functions & Event Listeners
+function handleEsc(evt) {
+  if (evt.key === "Escape") {
+    closeModal();
+    console.log("Escape!");
+  }
+}
 
-function setCloseEvtHandlers(modal) {
-
-  const handleEsc = (evt) => {
-    if (evt.key === "Escape") {
-      closeModal(modal);
-      document.removeEventListener("keydown", handleEsc);
-    }
-  };
-
-  const handleOverlay = (evt) => {
-    if (evt.target.classList.contains("modal")) {
-      closeModal(modal);
-    }
-  };
-
-  modal.addEventListener("click", handleOverlay);
-  document.addEventListener("keydown", handleEsc);
-};
+function handleOverlay(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  setCloseEvtHandlers(modal);
-};
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-};
+  document.addEventListener("keydown", handleEsc);
+  modal.addEventListener("mousedown", handleOverlay);
+}
 
-editButton.addEventListener("click", () => {
+function closeModal(openedModal) {
+  openedModal.classList.remove("modal_opened");
+
+  document.removeEventListener("keydown", handleEsc);
+  openedModal.removeEventListener("mousedown", handleOverlay);
+}
+
+function fillProfileFields() {
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
+}
 
+editButton.addEventListener("click", () => {
+  fillProfileFields();
   openModal(editModal);
 });
 
@@ -151,6 +154,7 @@ addForm.addEventListener("submit", (evt) => {
   renderCard(newCard, cardList);
   closeModal(addModal);
   addForm.reset();
+  toggleButtonState();
 });
 
 initialCards.forEach(function (cardData) {

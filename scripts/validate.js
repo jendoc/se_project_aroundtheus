@@ -22,30 +22,32 @@ function hideInputError(
 
 function checkInputValidity(formElement, inputElement, configObjects) {
   if (!inputElement.validity.valid) {
-    return showInputError(formElement, inputElement, configObjects);
+    showInputError(formElement, inputElement, configObjects);
+    hasInvalidInput();
+  } else {
+    hideInputError(formElement, inputElement, configObjects);
   }
-  hideInputError(formElement, inputElement, configObjects);
 }
 
 function hasInvalidInput(inputList) {
-  return inputList.every((inputElement) => inputElement.validity.valid);
+  return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
 function disableButton(submitButton, { inactiveButtonClass }) {
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
-}
-
-function enableButton(submitButton, { inactiveButtonClass }) {
   submitButton.classList.add(inactiveButtonClass);
   submitButton.disabled = true;
 }
 
+function enableButton(submitButton, { inactiveButtonClass }) {
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
+}
+
 function toggleButtonState(inputList, submitButton, configObjects) {
   if (hasInvalidInput(inputList)) {
-    disableButton(submitButton, configObjects);
+    disableButton(submitButton, { inactiveButtonClass });
   } else {
-    enableButton(submitButton, configObjects);
+    enableButton(submitButton, { inactiveButtonClass });
   }
 }
 
@@ -54,11 +56,11 @@ function setEventListeners(formElement, configObjects) {
   const { inputSelector } = configObjects;
   const submitButton = formElement.querySelector(submitButtonSelector);
   const inputList = [...formElement.querySelectorAll(inputSelector)];
+  toggleButtonState(inputList, submitButton, configObjects);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, configObjects);
-      toggleButtonState(inputList, submitButton, configObjects);
     });
   });
 }
@@ -81,7 +83,7 @@ enableValidation({
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "modal__button_disabled",
+  inactiveButtonClass: "modal__submit-button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 });

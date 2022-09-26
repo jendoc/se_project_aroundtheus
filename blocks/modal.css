@@ -44,11 +44,6 @@
   transition: ease-in-out 0.4s;
 }
 
-.modal__close-button:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -102,18 +97,20 @@
   transition: ease-in-out 0.4s;
 }
 
-.modal__submit-button:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
 .modal__submit-button_disabled {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  padding: 15px;
-  background: #ffffff;
+}
+
+.modal__submit-button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal__submit-button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
 }
 
 .modal__container_image {
