@@ -39,6 +39,8 @@ const inputAboutMe = document.querySelector(".modal__about-me");
 
 const addModal = document.querySelector("#add-modal");
 const addForm = addModal.querySelector(".modal__form_add");
+const inputList = [...addForm.querySelectorAll(".modal__input")];
+const addSubmitButton = addModal.querySelector(".modal__submit-button");
 
 const imageModal = document.querySelector("#image-modal");
 const modalImage = imageModal.querySelector(".modal__image");
@@ -88,6 +90,7 @@ editButton.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", () => {
+  toggleButtonState(inputList, addSubmitButton, {inactiveButtonClass: "modal__submit-button_disabled"});
   openModal(addModal);
 });
 
@@ -146,13 +149,10 @@ addForm.addEventListener("submit", (evt) => {
     title,
     link,
   });
-  const inputList = addModal.querySelectorAll(".modal__input");
-  const submitButton = addModal.querySelector(".submit__button");
 
   renderCard(newCard, cardList);
   closeModal(addModal);
   addForm.reset();
-  toggleButtonState(inputList, submitButton, { inactiveButtonClass });
 });
 
 initialCards.forEach(function (cardData) {
