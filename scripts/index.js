@@ -39,8 +39,6 @@ const inputAboutMe = document.querySelector(".modal__about-me");
 
 const addModal = document.querySelector("#add-modal");
 const addForm = addModal.querySelector(".modal__form_add");
-const inputTitle = document.querySelector(".modal__title");
-const inputImageLink = document.querySelector(".modal__image-link");
 
 const imageModal = document.querySelector("#image-modal");
 const modalImage = imageModal.querySelector(".modal__image");
