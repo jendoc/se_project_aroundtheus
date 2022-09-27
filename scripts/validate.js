@@ -29,7 +29,6 @@ function checkInputValidity(formElement, inputElement, configObject) {
 }
 
 function hasInvalidInput(inputList) {
-  console.log(inputList);
   return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
