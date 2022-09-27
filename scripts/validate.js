@@ -20,16 +20,16 @@ function hideInputError(
   errorMessageEl.classList.remove(errorClass);
 }
 
-function checkInputValidity(formElement, inputElement, configObjects) {
+function checkInputValidity(formElement, inputElement, configObject) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, configObjects);
-    hasInvalidInput();
+    showInputError(formElement, inputElement, configObject);
   } else {
-    hideInputError(formElement, inputElement, configObjects);
+    hideInputError(formElement, inputElement, configObject);
   }
 }
 
 function hasInvalidInput(inputList) {
+  console.log(inputList)
   return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
@@ -43,42 +43,43 @@ function enableButton(submitButton, { inactiveButtonClass }) {
   submitButton.disabled = false;
 }
 
-function toggleButtonState(inputList, submitButton, configObjects) {
+function toggleButtonState(inputList, submitButton, configObject) {
   if (hasInvalidInput(inputList)) {
-    disableButton(submitButton, { inactiveButtonClass });
+    disableButton(submitButton, configObject);
   } else {
-    enableButton(submitButton, { inactiveButtonClass });
+    enableButton(submitButton, configObject);
   }
 }
 
-function setEventListeners(formElement, configObjects) {
-  const { submitButtonSelector } = configObjects;
-  const { inputSelector } = configObjects;
+function setEventListeners(formElement, configObject) {
+  const { submitButtonSelector } = configObject;
+  const { inputSelector } = configObject;
   const submitButton = formElement.querySelector(submitButtonSelector);
   const inputList = [...formElement.querySelectorAll(inputSelector)];
-  toggleButtonState(inputList, submitButton, configObjects);
+  toggleButtonState(inputList, submitButton, configObject);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement, configObjects);
+      checkInputValidity(formElement, inputElement, configObject);
+      toggleButtonState(inputList, submitButton, configObject);
     });
   });
 }
 
-function enableValidation(configObjects) {
+function enableValidation(configObject) {
   const formElements = [
-    ...document.querySelectorAll(configObjects.formSelector),
+    ...document.querySelectorAll(configObject.formSelector),
   ];
   formElements.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault;
     });
 
-    setEventListeners(formElement, configObjects);
+    setEventListeners(formElement, configObject);
   });
 }
 
-//pass configObjects to function
+//pass configObject to function
 enableValidation({
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

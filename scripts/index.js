@@ -46,8 +46,6 @@ const imageModal = document.querySelector("#image-modal");
 const modalImage = imageModal.querySelector(".modal__image");
 const modalCaption = imageModal.querySelector(".modal__caption");
 
-const openedModal = document.querySelector(".modal_opened");
-
 // Buttons
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -56,8 +54,8 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 // Functions & Event Listeners
 function handleEsc(evt) {
   if (evt.key === "Escape") {
-    closeModal();
-    console.log("Escape!");
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
   }
 }
 
@@ -74,20 +72,20 @@ function openModal(modal) {
   modal.addEventListener("mousedown", handleOverlay);
 }
 
-function closeModal(openedModal) {
-  openedModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 
   document.removeEventListener("keydown", handleEsc);
-  openedModal.removeEventListener("mousedown", handleOverlay);
+  modal.removeEventListener("mousedown", handleOverlay);
 }
 
-function fillProfileFields() {
+function fillProfileForm() {
   inputName.value = profileName.textContent;
   inputAboutMe.value = profileAboutMe.textContent;
 }
 
 editButton.addEventListener("click", () => {
-  fillProfileFields();
+  fillProfileForm();
   openModal(editModal);
 });
 
@@ -154,7 +152,7 @@ addForm.addEventListener("submit", (evt) => {
   renderCard(newCard, cardList);
   closeModal(addModal);
   addForm.reset();
-  toggleButtonState();
+  addForm.toggleButtonState(inputList, submitButton, configObject);
 });
 
 initialCards.forEach(function (cardData) {

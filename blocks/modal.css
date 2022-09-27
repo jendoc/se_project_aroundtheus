@@ -44,6 +44,11 @@
   transition: ease-in-out 0.4s;
 }
 
+.modal__close-button:hover { 
+  opacity: 0.6; 
+  cursor: pointer; 
+} 
+
 .modal__form {
   display: flex;
   flex-direction: column;
