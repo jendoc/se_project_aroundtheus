@@ -146,17 +146,13 @@ addForm.addEventListener("submit", (evt) => {
     title,
     link,
   });
+  const inputList = addModal.querySelectorAll(".modal__input");
+  const submitButton = addModal.querySelector(".submit__button");
 
   renderCard(newCard, cardList);
   closeModal(addModal);
   addForm.reset();
-  const inputList = [...addForm.querySelectorAll(".modal__input")];
-  const submitButton = addForm.querySelector(".modal__submit-button");
-  const inactiveButtonClass = addForm.querySelector(
-    "modal__submit-button_disabled"
-  );
-  // reset validation
-  toggleButtonState(inputList, submitButton, inactiveButtonClass);
+  toggleButtonState(inputList, submitButton, { inactiveButtonClass });
 });
 
 initialCards.forEach(function (cardData) {
