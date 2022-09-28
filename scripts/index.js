@@ -152,7 +152,9 @@ addForm.addEventListener("submit", (evt) => {
 
   renderCard(newCard, cardList);
   closeModal(addModal);
-  addForm.reset();
+  addForm.reset(); 
+  toggleButtonState(inputList, addSubmitButton, {inactiveButtonClass: "modal__submit-button_disabled"});
+
 });
 
 initialCards.forEach(function (cardData) {
