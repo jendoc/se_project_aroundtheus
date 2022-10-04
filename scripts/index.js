@@ -1,3 +1,6 @@
+import FormValidator from "./FormValidator.js";
+import Card from "./Card.js";
+
 const initialCards = [
   {
     title: "Grand Prismatic Spring",
@@ -52,32 +55,32 @@ const addButton = document.querySelector(".profile__add-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // Functions & Event Listeners
-function handleEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
+// function handleEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_opened");
+//     closeModal(openedModal);
+//   }
+// }
 
-function handleOverlay(evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
-  }
-}
+// function handleOverlay(evt) {
+//   if (evt.target.classList.contains("modal")) {
+//     closeModal(evt.target);
+//   }
+// }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
 
-  document.addEventListener("keydown", handleEsc);
-  modal.addEventListener("mousedown", handleOverlay);
-}
+//   document.addEventListener("keydown", handleEsc);
+//   modal.addEventListener("mousedown", handleOverlay);
+// }
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
 
-  document.removeEventListener("keydown", handleEsc);
-  modal.removeEventListener("mousedown", handleOverlay);
-}
+//   document.removeEventListener("keydown", handleEsc);
+//   modal.removeEventListener("mousedown", handleOverlay);
+// }
 
 function fillProfileForm() {
   inputName.value = profileName.textContent;
@@ -108,36 +111,37 @@ function saveProfileEdits(evt) {
 
 editForm.addEventListener("submit", saveProfileEdits);
 
-function createCard(cardData) {
-  const card = cardTemplate.cloneNode(true);
-  const cardImage = card.querySelector(".card__image");
-  const cardTitle = card.querySelector(".card__title");
-  const likeButton = card.querySelector(".card__like-button");
-  const deleteButton = card.querySelector(".card__delete-button");
+// function createCard(cardData) {
+//   const card = cardTemplate.cloneNode(true);
+//   const cardImage = card.querySelector(".card__image");
+//   const cardTitle = card.querySelector(".card__title");
+//   const likeButton = card.querySelector(".card__like-button");
+//   const deleteButton = card.querySelector(".card__delete-button");
 
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.title;
-  cardTitle.textContent = cardData.title;
-  cardImage.addEventListener("click", function () {
-    openModal(imageModal);
-    modalImage.src = cardData.link;
-    modalImage.alt = cardData.title;
-    modalCaption.textContent = cardData.title;
-  });
+//   cardImage.src = cardData.link;
+//   cardImage.alt = cardData.title;
+//   cardTitle.textContent = cardData.title;
+//   cardImage.addEventListener("click", function () {
+//     openModal(imageModal);
+//     modalImage.src = cardData.link;
+//     modalImage.alt = cardData.title;
+//     modalCaption.textContent = cardData.title;
+//   });
 
-  likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+//   likeButton.addEventListener("click", function () {
+//     likeButton.classList.toggle("card__like-button_active");
+//   });
 
-  deleteButton.addEventListener("click", function () {
-    const badCard = deleteButton.closest(".card");
-    badCard.remove();
-  });
+//   deleteButton.addEventListener("click", function () {
+//     const badCard = deleteButton.closest(".card");
+//     badCard.remove();
+//   });
 
-  return card;
-}
+//   return card;
+// }
 
 function renderCard(card, container) {
+  const card = new Card(data, "#card").generateCard();
   container.prepend(card);
 }
 
@@ -157,7 +161,22 @@ addForm.addEventListener("submit", (evt) => {
 
 });
 
-initialCards.forEach(function (cardData) {
-  const initCard = createCard(cardData);
-  renderCard(initCard, cardList);
-});
+// initialCards.forEach(function (cardData) {
+//   const initCard = createCard(cardData);
+//   renderCard(initCard, cardList);
+// });
+
+// Validation
+const configObject = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator(configObject, editForm);
+const addFormValidator = new FormValidator(configObject, addForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
