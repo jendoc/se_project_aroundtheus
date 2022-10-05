@@ -55,32 +55,32 @@ const addButton = document.querySelector(".profile__add-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
 // Functions & Event Listeners
-// function handleEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const openedModal = document.querySelector(".modal_opened");
-//     closeModal(openedModal);
-//   }
-// }
+function handleEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
 
-// function handleOverlay(evt) {
-//   if (evt.target.classList.contains("modal")) {
-//     closeModal(evt.target);
-//   }
-// }
+function handleOverlay(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
+  }
+}
 
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 
-//   document.addEventListener("keydown", handleEsc);
-//   modal.addEventListener("mousedown", handleOverlay);
-// }
+  document.addEventListener("keydown", handleEsc);
+  modal.addEventListener("mousedown", handleOverlay);
+}
 
-// function closeModal(modal) {
-//   modal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 
-//   document.removeEventListener("keydown", handleEsc);
-//   modal.removeEventListener("mousedown", handleOverlay);
-// }
+  document.removeEventListener("keydown", handleEsc);
+  modal.removeEventListener("mousedown", handleOverlay);
+}
 
 function fillProfileForm() {
   inputName.value = profileName.textContent;
@@ -140,9 +140,9 @@ editForm.addEventListener("submit", saveProfileEdits);
 //   return card;
 // }
 
-function renderCard(card, container) {
-  const card = new Card(data, "#card").generateCard();
-  container.prepend(card);
+function renderCard(container) {
+  const newCard = new Card(data, "#card").generateCard();
+  container.prepend(newCard);
 }
 
 addForm.addEventListener("submit", (evt) => {

@@ -43,7 +43,7 @@ class Card {
   }
 
   _handleLike() {
-    
+
   }
 
   _handleDelete() {
@@ -52,7 +52,9 @@ class Card {
 
   _handlePreviewPicture() {}
 
-  _setEventListeners() {}
+  _setEventListeners() {
+
+  }
 
   generateCard() {
     this._card = this._getTemplate();
