@@ -3,7 +3,6 @@ class Card {
     this._title = data.title;
     this._link = data.link;
 
-    this._handleDelete.bind(this);
     this._handleImageClick = handleImageClick;
 
     this._cardSelector = cardSelector;
@@ -31,8 +30,7 @@ class Card {
     this._card
       .querySelector(".card__image")
       .addEventListener("click", () => this._handleImageClick());
-    this._card
-      .querySelector(".card__like-button")
+    this._likeButton
       .addEventListener("click", this._handleLike);
     this._card
       .querySelector(".card__delete-button")

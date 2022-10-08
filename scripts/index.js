@@ -1,6 +1,6 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
-import * as Utils from "./Utils.js";
+import { openModal, closeModal } from "./utils.js";
 import { initialCards, configObject } from "./constants.js";
 
 // Page components
@@ -22,7 +22,6 @@ const modalImage = document.querySelector(".modal__image");
 const imageModalCaption = document.querySelector(".modal__caption");
 
 // Buttons
-const addSubmitButton = addModal.querySelector(".modal__submit-button");
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
 const closeButtons = document.querySelectorAll(".modal__close-button");
@@ -35,23 +34,23 @@ function fillProfileForm() {
 
 editProfileButton.addEventListener("click", () => {
   fillProfileForm();
-  Utils.openModal(editModal);
+  openModal(editModal);
 });
 
 addCardButton.addEventListener("click", () => {
-  Utils.openModal(addModal);
+  openModal(addModal);
 });
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
-  button.addEventListener("click", () => Utils.closeModal(modal));
+  button.addEventListener("click", () => closeModal(modal));
 });
 
 function saveProfileEdits(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAboutMe.textContent = inputAboutMe.value;
-  Utils.closeModal(editModal);
+  closeModal(editModal);
 }
 
 editForm.addEventListener("submit", saveProfileEdits);
@@ -60,7 +59,7 @@ function openImagePreview() {
   modalImage.src = this._link;
   modalImage.alt = `Photo of ${this._title}`;
   imageModalCaption.textContent = this._title;
-  Utils.openModal(imageModal);
+  openModal(imageModal);
 }
 
 function renderCard(data, container) {
@@ -84,9 +83,9 @@ addForm.addEventListener("submit", (evt) => {
     cardList
   );
 
-  Utils.closeModal(addModal);
+  closeModal(addModal);
   addForm.reset();
-  addSubmitButton.classList.add("modal__submit-button_disabled");
+  addFormValidator.disableButton();
   addFormValidator.disableButton();
 });
 
