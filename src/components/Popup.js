@@ -1,4 +1,4 @@
-class Popup {
+export default class Popup {
   constructor(popupSelector) {}
 
   _openModal(modal) {
@@ -27,5 +27,3 @@ class Popup {
     }
   }
 }
-
-export default Popup;
