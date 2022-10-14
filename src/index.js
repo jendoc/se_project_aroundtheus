@@ -1,8 +1,9 @@
-import "./page/index.css"; // import main stylesheet
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
-import { openModal, closeModal } from "./utils.js";
-import { initialCards, configObject } from "./constants.js";
+import "./page/index.css";
+
+import FormValidator from "./components/FormValidator.js";
+import Card from "./components/Card.js";
+import { openModal, closeModal } from "./scripts/utils.js";
+import { initialCards, configObject } from "./scripts/constants.js";
 
 // Page components
 const cardList = document.querySelector(".gallery__grid");

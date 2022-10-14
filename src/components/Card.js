@@ -2,9 +2,7 @@ class Card {
   constructor(data, cardSelector, handleImageClick) {
     this._title = data.title;
     this._link = data.link;
-
     this._handleImageClick = handleImageClick;
-
     this._cardSelector = cardSelector;
   }
 
@@ -30,8 +28,7 @@ class Card {
     this._card
       .querySelector(".card__image")
       .addEventListener("click", () => this._handleImageClick());
-    this._likeButton
-      .addEventListener("click", this._handleLike);
+    this._likeButton.addEventListener("click", this._handleLike);
     this._card
       .querySelector(".card__delete-button")
       .addEventListener("click", this._handleDelete);

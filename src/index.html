@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Jennifer Doctor" />
     <title>Around the U.S.</title>
-    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
   </head>
   <body class="page">
     <header class="header">
       <img
-        src="./images/logo.svg"
+        src="<%=require('./images/logo.svg')%>"
         class="header__logo"
         alt="Around The U.S. logo"
       />
@@ -19,20 +18,28 @@
       <section class="profile">
         <img
           class="profile__avatar"
-          src="./images/jacques-cousteau.png"
+          src="<%=require('./images/jacques-cousteau.png')%>"
           alt="Famed French oceanographer, Jacques Cousteau"
         />
         <div class="profile__info">
           <h1 class="profile__name">Jacques Cousteau</h1>
-          <button class="profile__edit-button" type="button"></button>
+          <button
+            class="profile__edit-button"
+            title="profile edit button"
+            type="button"
+          ></button>
           <p class="profile__description">Explorer</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button
+          class="profile__add-button"
+          title="profile add button"
+          type="button"
+        ></button>
       </section>
 
       <div class="modal" id="edit-modal">
         <div class="modal__container">
-          <button class="modal__close-button"></button>
+          <button class="modal__close-button" title="close button"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form_edit modal__form" novalidate>
             <input
@@ -69,7 +76,7 @@
 
       <div class="modal" id="add-modal">
         <div class="modal__container">
-          <button class="modal__close-button"></button>
+          <button class="modal__close-button" title="close button"></button>
           <h2 class="modal__title">New Place</h2>
           <form class="modal__form_add modal__form" novalidate>
             <input
@@ -99,7 +106,7 @@
 
       <div class="modal" id="image-modal">
         <div class="modal__container modal__container_image">
-          <button class="modal__close-button"></button>
+          <button class="modal__close-button" title="close button"></button>
           <img src=" " alt=" " class="modal__image" />
           <p class="modal__caption"></p>
         </div>
@@ -110,9 +117,9 @@
 
         <template id="card-template">
           <li class="card">
-            <img class="card__image" alt=""/>
+            <img class="card__image" alt="" />
             <img
-              src="./images/trash.svg"
+              src="<%=require('./images/trash.svg')%>"
               class="card__delete-button"
               alt="delete button"
             />
@@ -128,7 +135,5 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>
-    <script src="./scripts/index.js" type="module"></script>
-    <script src="./scripts/utils.js" type="module"></script>
   </body>
 </html>
