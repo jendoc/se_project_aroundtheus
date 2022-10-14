@@ -26,6 +26,9 @@ All popups open with a smooth transition. They can be closed with the X button, 
 
 Forms are validated, and error messages display dynamically as users type. Submit buttons are disabled when form does not pass validation.
 
+
+I'm currently working to utilize Webpack to better organize and optimize my code.
+
 **GitHub Pages**
 
 * [Link to the project on GitHub Pages](https://jendoc.github.io/se_project_aroundtheus/)
