@@ -1,3 +1,4 @@
+import "./page/index.css"; // import main stylesheet
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 import { openModal, closeModal } from "./utils.js";
