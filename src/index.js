@@ -8,7 +8,7 @@ import Card from "./components/Card";
 import Section from "./components/Section";
 import PopupWithImage from "./components/PopupwithImage";
 import PopupWithForms from "./components/PopupWithForms";
-import { initialCards, selectors, configObject } from "./utils/constants";
+import { initialCards, selectors, validationConfig } from "./utils/constants";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 
@@ -35,9 +35,13 @@ const CardSection = new Section(
   selectors.cardList
 );
 
+const editFormValidator = new FormValidator(validationConfig, selectors.editForm);
+const addFormValidator = new FormValidator(validationConfig, selectors.addForm);
+
 const EditFormPopup = new PopupWithForms({
   popupSelector: selectors.editPopup,
   handleFormSubmit: (inputValues) => {
+    
     console.log(inputValues);
   }
 });
@@ -45,7 +49,7 @@ const EditFormPopup = new PopupWithForms({
 const AddFormPopup = new PopupWithForms({
   popupSelector: selectors.addPopup,
   handleFormSubmit: (data) => {
-    const cardEl = new Card(
+    const newCard = new Card(
       {
         data,
         handleImageClick: (imgData) => {
@@ -54,25 +58,24 @@ const AddFormPopup = new PopupWithForms({
       },
       selectors.cardTemplate
     );
-    CardSection.addItem(cardEl.getView());
+    console.log(data);
+    CardSection.addItem(newCard.getView());
+    AddFormPopup.closePopup();
   },
-}
-  //addFormValidator.disableButton();
+},
+  //addFormValidator.disableButton()
 );
-
-//const editFormValidator = new FormValidator(configObject, editForm);
-//const addFormValidator = new FormValidator(configObject, selectors.addForm);
 
 // Initialize Classes
 CardSection.renderItems(initialCards);
 CardPreviewPopup.setEventsListeners();
-AddFormPopup.setEventsListeners();
+AddFormPopup;
+EditFormPopup;
 //editFormValidator.enableValidation();
 //addFormValidator.enableValidation();
 
 // All the rest
 editProfileButton.addEventListener("click", () => {
-  //fillProfileForm();
   EditFormPopup.openPopup();
 });
 

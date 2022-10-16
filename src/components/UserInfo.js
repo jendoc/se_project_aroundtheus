@@ -2,16 +2,16 @@ export default class UserInfo {
   constructor({ name, description }) {}
 
   getUserInfo() {
-    // returns object with info about user
     this._userinfo = {};
 
     return this._userinfo;
   }
 
   setUserInfo() {
-    // takes new user data
-    inputName.value = profileName.textContent;
-    inputAboutMe.value = profileAboutMe.textContent;
+    this._userinfo = this.getUserInfo();
+
+    this._userInfo.name.value = profileName.textContent;
+    this._userInfo.description.value = profileAboutMe.textContent;
     // adds to page
   }
 }

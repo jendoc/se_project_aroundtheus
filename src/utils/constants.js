@@ -25,7 +25,7 @@ export const initialCards = [
   },
 ];
 
-export const configObject = {
+export const validationConfig = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
   inactiveButtonClass: "modal__submit-button_disabled",
