@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     title: "Grand Prismatic Spring",
     link: "https://images.unsplash.com/photo-1533419784160-1f7f79022119?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1466&q=80",
@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 
-const configObject = {
+export const configObject = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
   inactiveButtonClass: "modal__submit-button_disabled",
@@ -33,4 +33,19 @@ const configObject = {
   errorClass: "modal__error_visible",
 };
 
-export { initialCards, configObject };
+export const selectors = {
+  // Card components
+  cardList: ".gallery__grid",
+  cardTemplate: "#card-template",
+  // Popups
+  previewPopup: "image-modal",
+  editPopup: "edit-modal",
+  addPopup: "add-modal",
+  // Forms
+  addForm: ".modal__form_add",
+  editForm: ".modal__form_edit",
+  // Buttons
+  closeButtons: "modal__close-button",
+  editProfileButton: ".profile__edit-button",
+  addCardButton: ".profile__add-button",
+};

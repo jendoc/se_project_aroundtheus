@@ -1,29 +1,44 @@
 export default class Popup {
-  constructor(popupSelector) {}
-
-  _openModal(modal) {
-    modal.classList.add("modal_opened");
-
-    document.addEventListener("keydown", handleEsc);
-    modal.addEventListener("mousedown", handleOverlay);
+  constructor(popupSelector) {
+    this._popupElement = document.querySelector(`#${popupSelector}`);
+    this._handleEscUp = this._handleEscUp.bind(this);
+    this._handleOverlay = this._handleOverlay.bind(this);
+    this._closeButtons = document.querySelectorAll(".modal__close-button");
   }
 
-  _closeModal(modal) {
-    modal.classList.remove("modal_opened");
+  openPopup() {
+    this._popupElement.classList.add("modal_opened");
 
-    document.removeEventListener("keydown", handleEsc);
-    modal.removeEventListener("mousedown", handleOverlay);
+    this.setEventsListeners();
+  }
+
+  closePopup() {
+    this._popupElement.classList.remove("modal_opened");
+
+    document.removeEventListener("keydown", this._handleEscUp);
+    this._popupElement.removeEventListener("mousedown", this._handleOverlay);
   }
 
   setEventsListeners() {
-    // adds "click" evt listener to the close icon
-    // adds "click" evt listener to the overlay
+    this._closeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        this.closePopup();
+      });
+    });
+
+    document.addEventListener("keydown", this._handleEscUp);
+    this._popupElement.addEventListener("mousedown", this._handleOverlay);
   }
 
-  _handleEscClose(evt) {
+  _handleEscUp(evt) {
     if (evt.key === "Escape") {
-      const openedModal = document.querySelector(".modal_opened");
-      closeModal(openedModal);
+      this.closePopup();
+    }
+  }
+
+  _handleOverlay(evt) {
+    if (evt.target.classList.contains("modal")) {
+      this.closePopup();
     }
   }
 }
