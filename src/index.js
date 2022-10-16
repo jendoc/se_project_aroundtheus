@@ -3,8 +3,8 @@ import "./page/index.css";
 // Import all the classes
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
-import { openModal, closeModal } from "./components/utils.js";
-import { initialCards, configObject } from "./components/constants.js";
+import { openModal, closeModal } from "./scripts/utils.js";
+import { initialCards, configObject } from "./scripts/constants.js";
 
 // Class Instances
 
