@@ -12,12 +12,6 @@
 This project is made so all the elements are displayed correctly on popular screen sizes.
 The website emulates a photo sharing application profile, featuring photos of locations around the United States.
 
-![Desktop](./images/aroundtheus_web.png)
-
-![Tablet](./images/aroundtheus_tablet.png)
-
-![Mobile](./images/aroundtheus_mobile.png)
-
 **Javascript Features**
 
 The project showcases my newfound JS knowledge. Users can adjust the name and description of the profile, like and delete cards, and even add their own cards.
