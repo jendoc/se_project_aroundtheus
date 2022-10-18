@@ -4,7 +4,6 @@
 
 * Intro  
 * Javascript Features
-* GitHub Pages 
 * Figma  
   
 **Intro**
@@ -19,13 +18,6 @@ The project showcases my newfound JS knowledge. Users can adjust the name and de
 All popups open with a smooth transition. They can be closed with the X button, by pressing Esc, or by clicking outside of the popup.
 
 Forms are validated, and error messages display dynamically as users type. Submit buttons are disabled when form does not pass validation.
-
-
-I'm currently working to utilize Webpack to better organize and optimize my code.
-
-**GitHub Pages**
-
-* [Link to the project on GitHub Pages](https://jendoc.github.io/se_project_aroundtheus/)
 
 **Figma**  
   
