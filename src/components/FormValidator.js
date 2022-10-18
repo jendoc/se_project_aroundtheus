@@ -35,8 +35,8 @@ export default class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => !inputElement.validity.valid);
+  _hasInvalidInput(_inputList) {
+    return _inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
   disableButton() {
@@ -56,11 +56,8 @@ export default class FormValidator {
       this._enableButton(this._submitButton);
     }
   }
-
+  
   _setEventListeners() {
-    this._submitButton = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
     this._inputList = [
       ...this._formElement.querySelectorAll(this._inputSelector),
     ];

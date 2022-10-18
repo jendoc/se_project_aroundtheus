@@ -43,6 +43,7 @@ const EditFormPopup = new PopupWithForms({
   handleFormSubmit: (inputValues) => {
     
     console.log(inputValues);
+    EditFormPopup.closePopup();
   }
 });
 
@@ -63,16 +64,16 @@ const AddFormPopup = new PopupWithForms({
     AddFormPopup.closePopup();
   },
 },
-  //addFormValidator.disableButton()
+  addFormValidator.disableButton()
 );
 
 // Initialize Classes
 CardSection.renderItems(initialCards);
 CardPreviewPopup.setEventsListeners();
-AddFormPopup;
-EditFormPopup;
-//editFormValidator.enableValidation();
-//addFormValidator.enableValidation();
+AddFormPopup.setEventsListeners();
+EditFormPopup.setEventsListeners();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 // All the rest
 editProfileButton.addEventListener("click", () => {
