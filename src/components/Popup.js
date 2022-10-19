@@ -8,21 +8,18 @@ export default class Popup {
 
   openPopup() {
     this._popupElement.classList.add("modal_opened");
-
-    this.setEventsListeners();
   }
 
   closePopup() {
     this._popupElement.classList.remove("modal_opened");
-
-    document.removeEventListener("keydown", this._handleEscDown);
-    this._popupElement.removeEventListener("mousedown", this._handleOverlay);
   }
 
   setEventsListeners() {
     this._closeButtons.forEach((button) => {
       button.addEventListener("click", () => {
         this.closePopup();
+        // Fires 3 times
+        // 
       });
     });
 

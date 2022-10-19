@@ -44,9 +44,10 @@ const EditFormPopup = new PopupWithForms({
     const newUserInfo = new UserInfo(
       selectors.userName, selectors.userAboutMe
     )
-
+    
     console.log(data);
     EditFormPopup.closePopup();
+    EditFormPopup.setEventsListeners();
   },
 });
 
