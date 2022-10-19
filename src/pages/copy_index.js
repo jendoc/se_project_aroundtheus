@@ -6,12 +6,6 @@ import Card from "./components/Card.js";
 import { openModal, closeModal } from "./scripts/utils.js";
 import { initialCards, configObject } from "./scripts/constants.js";
 
-// Class Instances
-
-// Initialize Classes
-
-// All the rest
-
 // Page components
 const cardList = document.querySelector(".gallery__grid");
 const profileName = document.querySelector(".profile__name");
