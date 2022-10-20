@@ -43,9 +43,9 @@ export const selectors = {
   // Forms
   addForm: ".modal__form_add",
   editForm: ".modal__form_edit",
-  
-  userName: "profile__name",
-  userAboutMe: "profile__description",
+  // Profile Elements
+  userName: ".profile__name",
+  userAboutMe: ".profile__description",
   // Buttons
   closeButtons: "modal__close-button",
   editProfileButton: ".profile__edit-button",

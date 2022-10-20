@@ -12,8 +12,12 @@ import { initialCards, selectors, validationConfig } from "./utils/constants";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
+const inputName = document.querySelector(".modal__name");
+const inputAboutMe = document.querySelector(".modal__about-me");
 
 // Class Instances
+const userInfo = new UserInfo(selectors.userName, selectors.userAboutMe);
+
 const CardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 
 const CardSection = new Section(
@@ -37,21 +41,23 @@ const CardSection = new Section(
 const EditFormValidator = new FormValidator(validationConfig, selectors.editForm);
 const AddFormValidator = new FormValidator(validationConfig, selectors.addForm);
 
-    // Issue: not connected to DOM
 const EditFormPopup = new PopupWithForms({
   popupSelector: selectors.editPopup,
   handleFormSubmit: (data) => {
-    const newUserInfo = new UserInfo(
-      selectors.userName, selectors.userAboutMe
-    )
-    
-    console.log(data);
+    let editInputValues = {};
+
+    userInfo.setUserInfo(data);
+
     EditFormPopup.closePopup();
-    EditFormPopup.setEventsListeners();
+    EditFormValidator.disableButton();
+    
+    editInputValues = userInfo.getUserInfo();
+
+    inputName.value = editInputValues.name;
+    inputAboutMe.value = editInputValues.description;
   },
 });
 
-    // Issue: creating multiple empty card elements on submit
 const AddFormPopup = new PopupWithForms(
   {
     popupSelector: selectors.addPopup,
@@ -67,9 +73,9 @@ const AddFormPopup = new PopupWithForms(
       );
       CardSection.addItem(newCard.getView());
       AddFormPopup.closePopup();
+      AddFormValidator.disableButton();
     },
   },
-  AddFormValidator.disableButton()
 );
 
 // Initialize Classes
