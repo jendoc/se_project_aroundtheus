@@ -7,7 +7,9 @@ class FormValidator {
     this._errorClass = validationConfig.errorClass;
 
     this._formElement = document.querySelector(formElement);
-    this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   _hideInputError(inputElement) {
@@ -36,8 +38,8 @@ class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => !inputElement.validity.valid);
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
   disableButton() {

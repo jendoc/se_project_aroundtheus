@@ -3,39 +3,47 @@ export default class Popup {
     this._popupElement = document.querySelector(`#${popupSelector}`);
     this._handleEscDown = this._handleEscDown.bind(this);
     this._handleOverlay = this._handleOverlay.bind(this);
-    this._closeButtons = document.querySelectorAll(".modal__close-button");
+    this._closeButton = this._popupElement.querySelector(
+      ".modal__close-button"
+    );
   }
 
   openPopup() {
     this._popupElement.classList.add("modal_opened");
+    this.setEventsListeners();
   }
 
   closePopup() {
     this._popupElement.classList.remove("modal_opened");
+    this.removeEventsListeners();
   }
 
   setEventsListeners() {
-    this._closeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        this.closePopup();
-        // Fires 3 times
-        // 
-      });
+    this._closeButton.addEventListener("click", () => {
+      this.closePopup();
     });
 
     document.addEventListener("keydown", this._handleEscDown);
     this._popupElement.addEventListener("mousedown", this._handleOverlay);
   }
 
+  removeEventsListeners() {
+    this._closeButton.removeEventListener("click", this.closePopup);
+    document.removeEventListener("keydown", this._handleEscDown);
+    this._popupElement.removeEventListener("mousedown", this._handleOverlay);
+  }
+
   _handleEscDown(evt) {
     if (evt.key === "Escape") {
       this.closePopup();
+      console.log("escape");
     }
   }
 
   _handleOverlay(evt) {
     if (evt.target.classList.contains("modal")) {
       this.closePopup();
+      console.log("overlay");
     }
   }
 }
