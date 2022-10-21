@@ -7,7 +7,7 @@ import FormValidator from "../components/FormValidator";
 import Card from "../components/Card";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
-import PopupWithForms from "../components/PopupWithForms";
+import PopupWithForm from "../components/PopupWithForm";
 import { initialCards, selectors, validationConfig } from "../utils/constants";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -47,20 +47,17 @@ const editFormValidator = new FormValidator(
 );
 const addFormValidator = new FormValidator(validationConfig, selectors.addForm);
 
-const editFormPopup = new PopupWithForms({
+const editFormPopup = new PopupWithForm({
   popupSelector: selectors.editPopup,
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
 
     editFormPopup.closePopup();
     editFormValidator.disableButton();
-
-    inputName.value = data.name;
-    inputAboutMe.value = data.description;
   },
 });
 
-const addFormPopup = new PopupWithForms({
+const addFormPopup = new PopupWithForm({
   popupSelector: selectors.addPopup,
   handleFormSubmit: (item) => {
     renderCard(item);
@@ -72,13 +69,13 @@ const addFormPopup = new PopupWithForms({
 // Initialize Classes
 cardSection.renderItems(initialCards);
 cardPreviewPopup.setEventsListeners();
-addFormPopup;
-editFormPopup;
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 // All the rest
 editProfileButton.addEventListener("click", () => {
+  inputName.value = userInfo.getUserInfo().name;
+  inputAboutMe.value = userInfo.getUserInfo().description;
   editFormPopup.openPopup();
 });
 

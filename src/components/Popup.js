@@ -6,6 +6,7 @@ export default class Popup {
     this._closeButton = this._popupElement.querySelector(
       ".modal__close-button"
     );
+    this.closePopup = this.closePopup.bind(this);
   }
 
   openPopup() {
@@ -36,14 +37,12 @@ export default class Popup {
   _handleEscDown(evt) {
     if (evt.key === "Escape") {
       this.closePopup();
-      console.log("escape");
     }
   }
 
   _handleOverlay(evt) {
     if (evt.target.classList.contains("modal")) {
       this.closePopup();
-      console.log("overlay");
     }
   }
 }
