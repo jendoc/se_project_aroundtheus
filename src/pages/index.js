@@ -56,7 +56,6 @@ const editFormPopup = new PopupWithForm({
     editFormValidator.disableButton();
   },
 });
-
 const addFormPopup = new PopupWithForm({
   popupSelector: selectors.addPopup,
   handleFormSubmit: (item) => {
@@ -74,8 +73,9 @@ addFormValidator.enableValidation();
 
 // All the rest
 editProfileButton.addEventListener("click", () => {
-  inputName.value = userInfo.getUserInfo().name;
-  inputAboutMe.value = userInfo.getUserInfo().description;
+  const { name, description } = userInfo.getUserInfo();
+  inputName.value = name;
+  inputAboutMe.value = description;
   editFormPopup.openPopup();
 });
 
