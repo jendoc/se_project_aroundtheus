@@ -14,13 +14,13 @@ The website emulates a photo sharing application profile, featuring photos of lo
 
 **Javascript Features**
 
-> Modular JS  
+* Modular JS  
 Scripts are organized according to the OOP paradigm and imported to an index file.
 
-> Webpack Bundling  
+* Webpack Bundling  
 Project is set up with both development and distribution environments utilizing webpack.
 
-> Form Validation  
+* Form Validation  
 Each popup form has custom validation with real-time feedback.
 
 **Figma**  
@@ -28,6 +28,6 @@ Each popup form has custom validation with real-time feedback.
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
 
 **Demo**  
-Watch a video demo of the project here: [Loom video demo](https://www.loom.com/share/ad91a37664734cc1a6fe24a9bfa8515b)
+* [Link to Loom video demo](https://www.loom.com/share/d4e42345d85e4cb495a050cb015b48f6)
 
 To demo on your own device, download the zip file, terminal command "npm i" then "npm run dev"
