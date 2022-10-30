@@ -27,7 +27,7 @@ Each popup form has custom validation with real-time feedback.
   
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
 
-**Demo**  
-* [Link to Loom video demo](https://www.loom.com/share/d4e42345d85e4cb495a050cb015b48f6)
+**GitHub Page**  
+* [Link to the project on GitHub Pages](https://jendoc.github.io/se_project_aroundtheus/)
 
 To demo on your own device, download the zip file, terminal command "npm i" then "npm run dev"
