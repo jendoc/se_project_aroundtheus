@@ -102,6 +102,12 @@
   transition: ease-in-out 0.4s;
 }
 
+.modal__submit-button_delete {
+  margin: 36px;
+  padding: 14px 124px;
+  width: 358px;
+}
+
 .modal__submit-button_disabled {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.2);
