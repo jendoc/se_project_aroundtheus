@@ -34,6 +34,7 @@ export default class Card {
     this._card
       .querySelector(".card__delete-button")
       .addEventListener("click", this._handleDelete);
+    // change to first confirm before deleting
   }
 
   getView() {

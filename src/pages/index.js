@@ -8,11 +8,13 @@ import Card from "../components/Card";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 import { selectors, validationConfig } from "../utils/constants";
 import Api from "../components/Api";
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
+const avatarEditButton = document.querySelector(".profile__avatar-edit");
 const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
 let cardSection;
@@ -35,13 +37,19 @@ const api = new Api({
   url: "https://around.nomoreparties.co/v1/group-12",
   headers: {
     authorization: "e81f67bc-340b-41c4-ba13-967f5deca81e",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   },
 });
 
-const userInfo = new UserInfo(selectors.userName, selectors.userAboutMe);
+const userInfo = new UserInfo(
+  selectors.userName,
+  selectors.userAboutMe,
+  selectors.userAvatar
+);
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
+
+const confirmationPopup = new PopupWithConfirmation(selectors.deletePopup);
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(
@@ -69,6 +77,11 @@ const editFormValidator = new FormValidator(
 );
 const addFormValidator = new FormValidator(validationConfig, selectors.addForm);
 
+const avatarFormValidator = new FormValidator(
+  validationConfig,
+  selectors.avatarForm
+);
+
 const editFormPopup = new PopupWithForm({
   popupSelector: selectors.editPopup,
   handleFormSubmit: (data) => {
@@ -82,10 +95,21 @@ const editFormPopup = new PopupWithForm({
 });
 const addFormPopup = new PopupWithForm({
   popupSelector: selectors.addPopup,
-  handleFormSubmit: (item) => {
-    renderCard(item);
+  handleFormSubmit: (data) => {
+    renderCard(data);
+    api.uploadCard(data);
     addFormPopup.closePopup();
     addFormValidator.disableButton();
+  },
+});
+
+const avatarFormPopup = new PopupWithForm({
+  popupSelector: selectors.avatarPopup,
+  handleFormSubmit: (data) => {
+    userInfo.setAvatar(data);
+    api.updateAvatar(data);
+    avatarFormPopup.closePopup();
+    avatarFormValidator.disableButton();
   },
 });
 
@@ -93,6 +117,7 @@ const addFormPopup = new PopupWithForm({
 cardPreviewPopup.setEventsListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 // All the rest
 editProfileButton.addEventListener("click", () => {
@@ -104,4 +129,8 @@ editProfileButton.addEventListener("click", () => {
 
 addCardButton.addEventListener("click", () => {
   addFormPopup.openPopup();
+});
+
+avatarEditButton.addEventListener("click", () => {
+  avatarFormPopup.openPopup();
 });

@@ -40,12 +40,16 @@ export const selectors = {
   previewPopup: "image-modal",
   editPopup: "edit-modal",
   addPopup: "add-modal",
+  avatarPopup: "avatar-modal",
+  deletePopup: "delete-modal",
   // Forms
   addForm: ".modal__form_add",
   editForm: ".modal__form_edit",
+  avatarForm: ".modal__form_avatar",
   // Profile Elements
   userName: ".profile__name",
   userAboutMe: ".profile__description",
+  userAvatar: ".profile__avatar",
   // Buttons
   closeButtons: "modal__close-button",
   editProfileButton: ".profile__edit-button",

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Jennifer Doctor" />
     <title>Around the U.S.</title>
+    <link rel="icon" type="image/png" href="./images/favicon.ico.png" />
   </head>
   <body class="page">
     <header class="header">
@@ -23,6 +24,7 @@
         />
         <button
           class="profile__avatar-edit"
+          title="Edit avatar"
           type="button"
           id="profile__avatar-edit"
         ></button>
@@ -30,21 +32,21 @@
           <h1 class="profile__name">Jacques Cousteau</h1>
           <button
             class="profile__edit-button"
-            title="profile edit button"
+            title="Edit profile"
             type="button"
           ></button>
           <p class="profile__description">Explorer</p>
         </div>
         <button
           class="profile__add-button"
-          title="profile add button"
+          title="Add a card"
           type="button"
         ></button>
       </section>
 
       <div class="modal" id="edit-modal">
         <div class="modal__container">
-          <button class="modal__close-button" title="close button"></button>
+          <button class="modal__close-button" title="Close popup"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form_edit modal__form" novalidate>
             <input
@@ -81,7 +83,7 @@
 
       <div class="modal" id="delete-modal">
         <div class="modal__container">
-          <button class="modal__close-button" title="close button"></button>
+          <button class="modal__close-button" title="Close popup"></button>
           <h2 class="modal__title">Are you sure?</h2>
           <button
             type="submit"
@@ -94,12 +96,12 @@
 
       <div class="modal" id="add-modal">
         <div class="modal__container">
-          <button class="modal__close-button" title="close button"></button>
+          <button class="modal__close-button" title="Close popup"></button>
           <h2 class="modal__title">New Place</h2>
           <form class="modal__form_add modal__form" novalidate>
             <input
               type="text"
-              name="title"
+              name="name"
               placeholder="Title"
               class="modal__title modal__input"
               id="add-title"
@@ -122,20 +124,20 @@
         </div>
       </div>
 
-      <div class="modal" id="profile-pic-modal">
+      <div class="modal" id="avatar-modal">
         <div class="modal__container">
-          <button class="modal__close-button" title="close button"></button>
+          <button class="modal__close-button" title="Close popup"></button>
           <h2 class="modal__title">Change profile picture</h2>
-          <form class="modal__form_add modal__form" novalidate>
+          <form class="modal__form_avatar modal__form" novalidate>
             <input
               type="url"
               name="link"
               placeholder="Image link"
-              class="modal__image-link modal__input"
-              id="add-link"
+              class="modal__avatar-link modal__input"
+              id="avatar-link"
               required
             />
-            <span class="modal__error" id="add-link-error"></span>
+            <span class="modal__error" id="avatar-link-error"></span>
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
@@ -143,7 +145,7 @@
 
       <div class="modal" id="image-modal">
         <div class="modal__container modal__container_image">
-          <button class="modal__close-button" title="close button"></button>
+          <button class="modal__close-button" title="Close popup"></button>
           <img src=" " alt=" " class="modal__image" />
           <p class="modal__caption"></p>
         </div>
