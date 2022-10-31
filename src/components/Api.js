@@ -26,14 +26,14 @@ export default class Api {
     return this._getResponse(res);
   }
 
-  async updateProfile(userName, userAboutMe) {
+  async updateProfile(data) {
     return fetch(this._url + "/users/me", {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: userName,
-        about: userAboutMe,
+        name: data.name,
+        about: data.about,
       }),
-    }).then(this._getResponse);
+    });
   }
 }

@@ -19,6 +19,22 @@
   margin-right: 45px;
 }
 
+.profile__avatar-edit {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  background-image: url(../images/edit.svg) no-repeat center;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0;
+  transition: ease-in-out 0.3s;
+}
+
+.profile__avatar-edit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .profile__info {
   display: -ms-grid;
   display: grid;

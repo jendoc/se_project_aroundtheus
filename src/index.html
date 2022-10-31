@@ -21,6 +21,11 @@
           src="<%=require('./images/jacques-cousteau.png')%>"
           alt="Famed French oceanographer, Jacques Cousteau"
         />
+        <button
+          class="profile__avatar-edit"
+          type="button"
+          id="profile__avatar-edit"
+        ></button>
         <div class="profile__info">
           <h1 class="profile__name">Jacques Cousteau</h1>
           <button
@@ -55,7 +60,7 @@
             <span class="modal__error" id="profile-name-error"></span>
             <input
               type="text"
-              name="description"
+              name="about"
               placeholder="Description"
               class="modal__about-me modal__input"
               id="profile-about-me"
@@ -78,12 +83,12 @@
         <div class="modal__container">
           <button class="modal__close-button" title="close button"></button>
           <h2 class="modal__title">Are you sure?</h2>
-            <button
-              type="submit"
-              class="modal__submit-button_delete modal__submit-button"
-            >
-              Yes
-            </button>
+          <button
+            type="submit"
+            class="modal__submit-button_delete modal__submit-button"
+          >
+            Yes
+          </button>
         </div>
       </div>
 
