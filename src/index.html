@@ -117,6 +117,25 @@
         </div>
       </div>
 
+      <div class="modal" id="profile-pic-modal">
+        <div class="modal__container">
+          <button class="modal__close-button" title="close button"></button>
+          <h2 class="modal__title">Change profile picture</h2>
+          <form class="modal__form_add modal__form" novalidate>
+            <input
+              type="url"
+              name="link"
+              placeholder="Image link"
+              class="modal__image-link modal__input"
+              id="add-link"
+              required
+            />
+            <span class="modal__error" id="add-link-error"></span>
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
+
       <div class="modal" id="image-modal">
         <div class="modal__container modal__container_image">
           <button class="modal__close-button" title="close button"></button>
