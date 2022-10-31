@@ -72,10 +72,20 @@ export default class Api {
 
   async addLike(data) {
     return fetch(this._url + `/cards/${cardId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: this._headers,
       body: JSON.stringify({
-        //like: data.like
+        //likes: [++]
+      }),
+    });
+  }
+
+  async removeLike(data) {
+    return fetch(this._url + `/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+      body: JSON.stringify({
+        //likes: remove one
       }),
     });
   }

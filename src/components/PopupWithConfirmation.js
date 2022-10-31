@@ -5,8 +5,8 @@ export default class PopupWithConfirmation extends Popup {
     super(popupSelector);
   }
 
-  delete() {
+  delete(data) {
     //deletes card from DOM
-    //removes card from API
+    api.removeCard(data);
   }
 }
