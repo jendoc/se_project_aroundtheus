@@ -30,6 +30,7 @@ const renderCard = (data) => {
     selectors.cardTemplate
   );
   cardSection.addItem(cardEl.getView());
+  cardEl.setLikes(data.likes);
 };
 
 // Class Instances

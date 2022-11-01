@@ -70,7 +70,13 @@ export default class Api {
     });
   }
 
-  async addLike(data) {
+  async getLikes(cardId) {
+    return fetch(`${this._url}/cards/likes/${cardId}`, {
+      headers: this._headers,
+    });
+  }
+
+  async addLike(cardId) {
     return fetch(this._url + `/cards/${cardId}`, {
       method: "PUT",
       headers: this._headers,

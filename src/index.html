@@ -20,7 +20,7 @@
         <img
           class="profile__avatar"
           src="<%=require('./images/jacques-cousteau.png')%>"
-          alt="Famed French oceanographer, Jacques Cousteau"
+          alt="Avatar image"
         />
         <button
           class="profile__avatar-edit"
@@ -164,7 +164,10 @@
             />
             <div class="card__description">
               <h2 class="card__title"></h2>
-              <button class="card__like-button" type="button"></button>
+              <div class="card__like-elements">
+                <button class="card__like-button" type="button"></button>
+                <p class="card__like-count"></p>
+              </div>
             </div>
           </li>
         </template>

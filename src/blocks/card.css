@@ -87,6 +87,11 @@
   cursor: pointer;
 }
 
+.card__like-count {
+  text-align: center;
+  margin: 0;
+}
+
 .card__delete-button {
   position: absolute;
   z-index: 2;

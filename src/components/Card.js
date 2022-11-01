@@ -1,7 +1,13 @@
+import { data } from "autoprefixer";
+
 export default class Card {
   constructor({ data, handleImageClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
+    this._userId = data._userId;
+    this._ownerId = data.owner._id;
+
     this._handleImageClick = handleImageClick;
     this._cardSelector = cardSelector;
   }
@@ -15,6 +21,16 @@ export default class Card {
     return cardElement;
   }
 
+  _showlikes() {
+    this._totalLikes.textContent = this._likes.length;
+
+    if (this.isLiked()) {
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      this._likeButton.classList.remove("card__like-button_active");
+    }
+  }
+
   _handleLike = () => {
     this._likeButton.classList.toggle("card__like-button_active");
   };
@@ -23,6 +39,12 @@ export default class Card {
     this._card.remove();
     this._card = null;
   };
+
+  _hideDelete() {
+    if (this._userId !== this._ownerId) {
+      this._card.querySelector(".card__delete-button").remove();
+    }
+  }
 
   _setEventListeners() {
     this._card
@@ -37,6 +59,15 @@ export default class Card {
     // change to first confirm before deleting
   }
 
+  setLikes(likes) {
+    this._likes = likes;
+    this._showlikes();
+  }
+
+  isLiked() {
+    return Boolean(this._likes.find((user) => user._id === this._userId));
+  }
+
   getView() {
     this._card = this._getTemplate();
 
@@ -47,6 +78,7 @@ export default class Card {
     imageElement.src = this._link;
     imageElement.alt = this._name;
     cardname.textContent = this._name;
+    this._totalLikes = this._card.querySelector(".card__like-count");
 
     this._setEventListeners();
 

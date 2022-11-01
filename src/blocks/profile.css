@@ -25,15 +25,16 @@
   position: absolute;
   height: 120px;
   width: 120px;
-  background-image: url(../images/edit.svg) no-repeat center #fff;
-  background-color: black;
+  background-image: url("../images/edit.svg") no-repeat cover;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: none;
   border-radius: 50%;
   opacity: 0;
   transition: ease-in-out 0.3s;
 }
 
 .profile__avatar-edit:hover {
-  opacity: 0.8;
+  opacity: 1;
   cursor: pointer;
 }
 
