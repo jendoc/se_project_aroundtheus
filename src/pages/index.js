@@ -19,21 +19,32 @@ const inputName = document.querySelector(".modal__name");
 const inputAboutMe = document.querySelector(".modal__about-me");
 let cardSection;
 
+const userInfo = new UserInfo(
+  selectors.userName,
+  selectors.userAboutMe,
+  selectors.userAvatar
+);
+
 const renderCard = (data) => {
   const cardEl = new Card(
     {
       data,
       handleImageClick: (imgData) => {
+        console.log(imgData)
         cardPreviewPopup.open(imgData);
       },
-    },
+      handleDeleteClick: () => {
+        const cardId = data._id;
+        passCard(cardId);
+      }
+      },
+      //userInfo.getId();
     selectors.cardTemplate
   );
   cardSection.addItem(cardEl.getView());
   cardEl.setLikes(data.likes);
 };
 
-// Class Instances
 const api = new Api({
   url: "https://around.nomoreparties.co/v1/group-12",
   headers: {
@@ -42,15 +53,25 @@ const api = new Api({
   },
 });
 
-const userInfo = new UserInfo(
-  selectors.userName,
-  selectors.userAboutMe,
-  selectors.userAvatar
-);
-
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 
-const confirmationPopup = new PopupWithConfirmation(selectors.deletePopup);
+const confirmationPopup = new PopupWithConfirmation(selectors.deletePopup, handleDelete);
+
+function passCard(cardId) {
+  console.log(cardId)
+  confirmationPopup.open(cardId)
+}
+
+function handleDelete(card) {
+  api.deleteCard(card._id)
+  .then(() => {
+    confirmationPopup.closePopup();
+    card.remove
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+};
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(
@@ -116,11 +137,13 @@ const avatarFormPopup = new PopupWithForm({
 
 // Initialize Classes
 cardPreviewPopup.setEventsListeners();
+confirmationPopup.setEventsListeners();
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-// All the rest
+// Button Event Listeners
 editProfileButton.addEventListener("click", () => {
   const { name, about } = userInfo.getUserInfo();
   inputName.value = name;

@@ -92,6 +92,10 @@
   margin: 0;
 }
 
+.card__delete-button_hidden {
+  visibility: hidden;
+}
+
 .card__delete-button {
   position: absolute;
   z-index: 2;

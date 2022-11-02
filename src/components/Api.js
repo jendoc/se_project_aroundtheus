@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 export default class Api {
   constructor(info) {
     this._url = info.url;
@@ -50,13 +48,10 @@ export default class Api {
     });
   }
 
-  async deleteCard(data) {
+  async deleteCard(cardId) {
     return fetch(this._url + `/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
-      body: JSON.stringify({
-        cardId: data._id,
-      }),
+      headers: this._headers
     });
   }
 
@@ -86,7 +81,7 @@ export default class Api {
     });
   }
 
-  async removeLike(data) {
+  async removeLike(cardId) {
     return fetch(this._url + `/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
