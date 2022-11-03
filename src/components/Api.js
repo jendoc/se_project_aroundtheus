@@ -52,7 +52,7 @@ export default class Api {
     return fetch(this._url + `/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers
-    });
+    })
   }
 
   async updateAvatar(data) {

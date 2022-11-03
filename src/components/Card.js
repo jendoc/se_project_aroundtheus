@@ -5,7 +5,7 @@ export default class Card {
   ) {
     this._name = data.name;
     this._link = data.link;
-    this._id = data._id;
+    this._cardId = data._id;
     this._likes = data.likes;
     this._userId = userId;
     this._ownerId = data.owner._id;
@@ -24,8 +24,8 @@ export default class Card {
     return cardElement;
   }
 
-  _showlikes() {
-    this._totalLikes.textContent = this._likes.length;
+  _renderlikes() {
+    //this._totalLikes.textContent = this._likes.length;
 
     if (this.isLiked()) {
       this._likeButton.classList.add("card__like-button_active");
@@ -39,10 +39,9 @@ export default class Card {
   };
 
   _addDeleteIcon() {
-    this._deleteButton = this._card.querySelector(".card__delete-button");
-    this._deleteButton.classList.remove(".card__delete-button_hidden");
+    this._deleteButton.classList.remove("card__delete-button_hidden");
     this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteClick()
+      this._handleDeleteClick(this)
     );
   }
 
@@ -53,18 +52,24 @@ export default class Card {
         this._handleImageClick({ link: this._link, name: this._name })
       );
     this._likeButton.addEventListener("click", this._handleLike);
-    this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteClick(this._card)
-    );
+  }
+
+  removeCard() {
+    this._card.remove();
+    this._card = null;
   }
 
   setLikes(likes) {
     this._likes = likes;
-    this._showlikes();
+    this._renderlikes();
   }
 
   isLiked() {
-    return this._likes.some((item) => item._id === this._userId);
+    //return this._likes.some((item) => item._id === this._userId);
+  }
+
+  getCardId() {
+    return this._cardId;
   }
 
   getView() {
@@ -80,11 +85,11 @@ export default class Card {
     cardname.textContent = this._name;
     this._totalLikes = this._card.querySelector(".card__like-count");
 
-    this._setEventListeners();
-    if (this._userId === this._ownerId) {
+    if (this._ownerId === this._userId) {
       this._addDeleteIcon();
     }
 
+    this._setEventListeners();
     return this._card;
   }
 }

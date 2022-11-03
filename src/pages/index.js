@@ -30,15 +30,14 @@ const renderCard = (data) => {
     {
       data,
       handleImageClick: (imgData) => {
-        console.log(imgData)
         cardPreviewPopup.open(imgData);
       },
       handleDeleteClick: () => {
-        const cardId = data._id;
-        passCard(cardId);
-      }
+        const card = data;
+        passCard(card);
       },
-      //userInfo.getId();
+      userId: userInfo.getId()
+    },
     selectors.cardTemplate
   );
   cardSection.addItem(cardEl.getView());
@@ -57,16 +56,18 @@ const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 
 const confirmationPopup = new PopupWithConfirmation(selectors.deletePopup, handleDelete);
 
-function passCard(cardId) {
-  console.log(cardId)
-  confirmationPopup.open(cardId)
+function passCard(card) {
+  confirmationPopup.open(card)
 }
 
 function handleDelete(card) {
-  api.deleteCard(card._id)
-  .then(() => {
+  const cardId = card._id;
+  api.deleteCard(cardId)
+  .then((res) => {
+  card.removeCard();
+  card = null;
     confirmationPopup.closePopup();
-    card.remove
+    console.log(res);
   })
   .catch((err) => {
     console.log(err)
@@ -86,6 +87,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
     cards.map((card) => {
+      debugger;
       renderCard(card);
     });
   })
