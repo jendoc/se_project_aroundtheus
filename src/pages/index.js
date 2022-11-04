@@ -26,22 +26,52 @@ const userInfo = new UserInfo(
 );
 
 const renderCard = (data) => {
-  const cardEl = new Card(
+  const card = new Card(
     {
       data,
       handleImageClick: (imgData) => {
         cardPreviewPopup.open(imgData);
       },
       handleDeleteClick: () => {
-        const card = data;
-        passCard(card);
+        confirmationPopup.open(() => {
+          confirmationPopup.renderLoading(true);
+          api
+            .deleteCard(data._id)
+            .then(() => {
+              card.removeCard();
+              confirmationPopup.closePopup();
+            })
+            .catch((err) => console.log(`An error occured: ${err}`))
+            .finally(() => confirmationPopup.renderLoading(false));
+        });
       },
-      userId: userInfo.getId()
+      handleLikeClick: () => {
+        if (card.isLiked()) {
+          api
+            .removeLike(card._cardId)
+            .then((res) => {
+              card.setLikes(res.likes);
+            })
+            .catch((err) => {
+              console.log(`An error occured: ${err}`);
+            });
+        } else {
+          api
+            .addLike(card._cardId)
+            .then((res) => {
+              card.setLikes(res.likes);
+            })
+            .catch((err) => {
+              console.log(`An error occured: ${err}`);
+            });
+        }
+      },
+      userId: userInfo.getId(),
     },
     selectors.cardTemplate
-  );
-  cardSection.addItem(cardEl.getView());
-  cardEl.setLikes(data.likes);
+    );
+  cardSection.addItem(card.getView());
+  card.setLikes(data.likes);
 };
 
 const api = new Api({
@@ -54,25 +84,25 @@ const api = new Api({
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 
-const confirmationPopup = new PopupWithConfirmation(selectors.deletePopup, handleDelete);
-
-function passCard(card) {
-  confirmationPopup.open(card)
-}
+const confirmationPopup = new PopupWithConfirmation(
+  selectors.deletePopup,
+  handleDelete
+);
 
 function handleDelete(card) {
-  const cardId = card._id;
-  api.deleteCard(cardId)
-  .then((res) => {
-  card.removeCard();
-  card = null;
-    confirmationPopup.closePopup();
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-};
+  const cardId = card._Id;
+  api
+    .deleteCard(cardId)
+    .then((res) => {
+      card.removeCard();
+      card = null;
+      confirmationPopup.closePopup();
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(
@@ -87,7 +117,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
     cards.map((card) => {
-      debugger;
       renderCard(card);
     });
   })
@@ -109,31 +138,52 @@ const avatarFormValidator = new FormValidator(
 const editFormPopup = new PopupWithForm({
   popupSelector: selectors.editPopup,
   handleFormSubmit: (data) => {
-    console.log(data);
-    userInfo.setUserInfo(data);
-    api.updateProfile(data);
-
-    editFormPopup.closePopup();
-    editFormValidator.disableButton();
+    editFormPopup.renderLoading(true);
+    api
+      .updateProfile(data)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        editFormPopup.closePopup();
+        editFormValidator.disableButton();
+      })
+      .catch((err) => {
+        console.log(`An error occured ${err}`);
+      })
+      .finally(() => editFormPopup.renderLoading(false));
   },
 });
+
 const addFormPopup = new PopupWithForm({
   popupSelector: selectors.addPopup,
   handleFormSubmit: (data) => {
-    renderCard(data);
-    api.uploadCard(data);
-    addFormPopup.closePopup();
-    addFormValidator.disableButton();
+    addFormPopup.renderLoading(true);
+    api
+      .uploadCard(data)
+      .then((data) => {
+        renderCard(data);
+        addFormPopup.closePopup();
+        addFormValidator.disableButton();
+      })
+      .catch((err) => console.log(`An error occured ${err}`))
+      .finally(() => addFormPopup.renderLoading(false));
   },
 });
 
 const avatarFormPopup = new PopupWithForm({
   popupSelector: selectors.avatarPopup,
   handleFormSubmit: (data) => {
-    userInfo.setAvatar(data);
-    api.updateAvatar(data);
-    avatarFormPopup.closePopup();
-    avatarFormValidator.disableButton();
+    avatarFormPopup.renderLoading(true);
+    api
+      .updateAvatar(data)
+      .then((data) => {
+        const avatarLink = data.avatar;
+        console.log(avatarLink);
+        userInfo.setAvatar(avatarLink);
+        avatarFormPopup.closePopup();
+        avatarFormValidator.disableButton();
+      })
+      .catch((err) => console.log(`An error occured ${err}`))
+      .finally(() => avatarFormPopup.renderLoading(false));
   },
 });
 
