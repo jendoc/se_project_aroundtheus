@@ -70,13 +70,15 @@ export default class Card {
 
     this._likeButton = this._card.querySelector(".card__like-button");
     this._deleteButton = this._card.querySelector(".card__delete-button");
-    const imageElement = this._card.querySelector(".card__image");
-    const cardname = this._card.querySelector(".card__title");
-
-    imageElement.src = this._link;
-    imageElement.alt = this._name;
-    cardname.textContent = this._name;
     this._totalLikes = this._card.querySelector(".card__like-count");
+    this._imageElement = this._card.querySelector(".card__image");
+    this._cardname = this._card.querySelector(".card__title");
+
+    this._imageElement.src = this._link;
+    this._imageElement.alt = this._name;
+    this._cardname.textContent = this._name;
+
+    this._renderlikes();
 
     if (this._ownerId === this._userId) {
       this._addDeleteIcon();

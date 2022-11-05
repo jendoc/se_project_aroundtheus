@@ -25,8 +25,8 @@ const userInfo = new UserInfo(
   selectors.userAvatar
 );
 
-const renderCard = (data) => {
-  const card = new Card(
+function createCard(data) {
+  const cardElement = new Card(
     {
       data,
       handleImageClick: (imgData) => {
@@ -38,7 +38,7 @@ const renderCard = (data) => {
           api
             .deleteCard(data._id)
             .then(() => {
-              card.removeCard();
+              cardElement.removeCard();
               confirmationPopup.close();
             })
             .catch((err) => console.log(`An error occured: ${err}`))
@@ -46,20 +46,20 @@ const renderCard = (data) => {
         });
       },
       handleLikeClick: () => {
-        if (card.isLiked()) {
+        if (cardElement.isLiked()) {
           api
-            .removeLike(card._cardId)
+            .removeLike(cardElement._cardId)
             .then((res) => {
-              card.setLikes(res.likes);
+              cardElement.setLikes(res.likes);
             })
             .catch((err) => {
               console.log(`An error occured: ${err}`);
             });
         } else {
           api
-            .addLike(card._cardId)
+            .addLike(cardElement._cardId)
             .then((res) => {
-              card.setLikes(res.likes);
+              cardElement.setLikes(res.likes);
             })
             .catch((err) => {
               console.log(`An error occured: ${err}`);
@@ -70,8 +70,12 @@ const renderCard = (data) => {
     },
     selectors.cardTemplate
   );
-  cardSection.addItem(card.getView());
-  card.setLikes(data.likes);
+  return cardElement.getView();
+}
+
+const renderCard = (data) => {
+  const card = createCard(data);
+  cardSection.addItem(card);
 };
 
 const api = new Api({
@@ -181,7 +185,6 @@ const avatarFormPopup = new PopupWithForm({
 
 // Initialize Classes
 cardPreviewPopup.setEventsListeners();
-confirmationPopup.setEventsListeners();
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();

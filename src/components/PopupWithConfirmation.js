@@ -18,8 +18,9 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   open(handleConfirm) {
-    super.openPopup();
+    this._popupElement.classList.add("modal_opened");
     this._handleConfirm = handleConfirm;
+    this.setEventsListeners();
   }
 
   close() {
@@ -28,14 +29,13 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   setEventsListeners() {
-    this._submitButton.addEventListener("click", () => {
-      this._handleConfirm();
-  })
-  super.setEventsListeners();
+    this._submitButton.addEventListener("click", this._handleConfirm)
+    super.setEventsListeners();
 }
 
   removeEventsListeners() {
     this._submitButton.removeEventListener("click",this._handleConfirm);
     super.removeEventsListeners();
+    return;
   }
 }
