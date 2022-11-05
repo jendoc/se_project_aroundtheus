@@ -38,7 +38,7 @@ export default class Card {
   _addDeleteIcon() {
     this._deleteButton.classList.remove("card__delete-button_hidden");
     this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteClick(this)
+      this._handleDeleteClick()
     );
   }
 

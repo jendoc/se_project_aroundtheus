@@ -33,13 +33,13 @@ function createCard(data) {
         cardPreviewPopup.open(imgData);
       },
       handleDeleteClick: () => {
-        confirmationPopup.open(() => {
+        confirmationPopup.openPopup(() => {
           confirmationPopup.renderLoading(true);
           api
             .deleteCard(data._id)
             .then(() => {
               cardElement.removeCard();
-              confirmationPopup.close();
+              confirmationPopup.closePopup();
             })
             .catch((err) => console.log(`An error occured: ${err}`))
             .finally(() => confirmationPopup.renderLoading(false));
@@ -89,24 +89,8 @@ const api = new Api({
 const cardPreviewPopup = new PopupWithImage(selectors.previewPopup);
 
 const confirmationPopup = new PopupWithConfirmation(
-  selectors.deletePopup,
-  handleDelete
+  selectors.deletePopup
 );
-
-function handleDelete(card) {
-  const cardId = card._Id;
-  api
-    .deleteCard(cardId)
-    .then((res) => {
-      card.removeCard();
-      card = null;
-      confirmationPopup.closePopup();
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
@@ -185,6 +169,7 @@ const avatarFormPopup = new PopupWithForm({
 
 // Initialize Classes
 cardPreviewPopup.setEventsListeners();
+//confirmationPopup.setEventsListeners();
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
