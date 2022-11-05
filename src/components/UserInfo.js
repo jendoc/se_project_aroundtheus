@@ -24,8 +24,4 @@ export default class UserInfo {
   getId() {
     return this._userId;
   }
-
-  setAvatar(data) {
-    this._userAvatarElement.src = data;
-  }
 }

@@ -39,7 +39,7 @@ const renderCard = (data) => {
             .deleteCard(data._id)
             .then(() => {
               card.removeCard();
-              confirmationPopup.closePopup();
+              confirmationPopup.close();
             })
             .catch((err) => console.log(`An error occured: ${err}`))
             .finally(() => confirmationPopup.renderLoading(false));
@@ -69,7 +69,7 @@ const renderCard = (data) => {
       userId: userInfo.getId(),
     },
     selectors.cardTemplate
-    );
+  );
   cardSection.addItem(card.getView());
   card.setLikes(data.likes);
 };
@@ -105,35 +105,31 @@ function handleDelete(card) {
 }
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(
-    (cardSection = new Section(
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    cardSection = new Section(
       {
-        items: [],
+        items: cards,
         renderer: renderCard,
       },
       selectors.cardList
-    ))
-  )
-  .then(([userData, cards]) => {
-    userInfo.setUserInfo(userData);
-    cards.map((card) => {
-      renderCard(card);
-    });
+    );
+    cardSection.renderItems();
   })
   .catch((err) => {
     console.log(err);
   });
 
 const editFormValidator = new FormValidator(
-  validationConfig,
-  selectors.editForm
-);
-const addFormValidator = new FormValidator(validationConfig, selectors.addForm);
+   validationConfig,
+   selectors.editForm
+ );
+ const addFormValidator = new FormValidator(validationConfig, selectors.addForm);
 
-const avatarFormValidator = new FormValidator(
-  validationConfig,
-  selectors.avatarForm
-);
+ const avatarFormValidator = new FormValidator(
+   validationConfig,
+   selectors.avatarForm
+ );
 
 const editFormPopup = new PopupWithForm({
   popupSelector: selectors.editPopup,
@@ -144,7 +140,6 @@ const editFormPopup = new PopupWithForm({
       .then((data) => {
         userInfo.setUserInfo(data);
         editFormPopup.closePopup();
-        editFormValidator.disableButton();
       })
       .catch((err) => {
         console.log(`An error occured ${err}`);
@@ -176,11 +171,8 @@ const avatarFormPopup = new PopupWithForm({
     api
       .updateAvatar(data)
       .then((data) => {
-        const avatarLink = data.avatar;
-        console.log(avatarLink);
-        userInfo.setAvatar(avatarLink);
+        userInfo.setUserInfo(data);
         avatarFormPopup.closePopup();
-        avatarFormValidator.disableButton();
       })
       .catch((err) => console.log(`An error occured ${err}`))
       .finally(() => avatarFormPopup.renderLoading(false));
@@ -200,13 +192,16 @@ editProfileButton.addEventListener("click", () => {
   const { name, about } = userInfo.getUserInfo();
   inputName.value = name;
   inputAboutMe.value = about;
+  editFormValidator.disableButton();
   editFormPopup.openPopup();
 });
 
 addCardButton.addEventListener("click", () => {
+  addFormValidator.disableButton();
   addFormPopup.openPopup();
 });
 
 avatarEditButton.addEventListener("click", () => {
+  avatarFormValidator.disableButton();
   avatarFormPopup.openPopup();
 });
