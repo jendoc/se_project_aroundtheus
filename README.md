@@ -30,4 +30,4 @@ Each popup form has custom validation with real-time feedback.
 **GitHub Page**  
 * [Link to the project on GitHub Pages](https://jendoc.github.io/se_project_aroundtheus/)
 
-To demo on your own device, download the zip file, terminal command "npm i" then "npm run dev"
+To demo on your own device with API functionality, download the zip file, terminal command "npm i" then "npm run dev"
