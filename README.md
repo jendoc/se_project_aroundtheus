@@ -23,6 +23,9 @@ Project is set up with both development and distribution environments utilizing 
 * Form Validation  
 Each popup form has custom validation with real-time feedback.
 
+* API Integration
+Data is fetched from an API and rendered on the page.
+
 **Figma**  
   
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
